@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Brand tokens (used by canvas & complex gradients) ── */
+:root {
+  --accent:      #7BAFC4;
+  --accent-h:    #96C4D6;
+  --accent-dim:  rgba(123,175,196,0.12);
+  --accent-glow: rgba(123,175,196,0.35);
+  --accent-text: #48BCDA;
+  --bg:          #0A0A0A;
+  --bg2:         #111111;
+  --bg3:         #141414;
+  --muted:       #6B7280;
+  --border:      rgba(255,255,255,0.07);
+}
+
+html { scroll-behavior: smooth; zoom: 0.9; }
+
+body {
+  background: var(--bg);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Typewriter cursor ── */
+.tw-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: var(--accent-text);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 0.7s infinite;
+}
+
+/* ── Chat typing dots ── */
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--muted);
+  border-radius: 50%;
+  animation: typing-bounce 0.9s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.30s; }
+
+/* ── Workflow canvas card ── */
+.wf-card {
+  background: rgba(8,10,6,0.92);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 20px 20px 16px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 0 80px rgba(255,255,255,0.04), inset 0 0 40px rgba(255,255,255,0.01);
+  position: relative;
+  overflow: hidden;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ── Section-tag pill ── */
+@layer components {
+  .section-tag {
+    @apply inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-3.5 py-1.5 rounded-full mb-5;
+    background: var(--accent-dim);
+    border: 1px solid rgba(123,175,196,0.25);
+    color: var(--accent);
+  }
+  .section-tag::before {
+    content: '';
+    @apply w-1.5 h-1.5 rounded-full flex-shrink-0;
+    background: var(--accent);
+    animation: pulse-dot 2s infinite;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-[11px] rounded-full cursor-pointer transition-all duration-[250ms] no-underline whitespace-nowrap;
+    background: var(--accent);
+  }
+  .btn-primary:hover {
+    background: var(--accent-h);
+    box-shadow: 0 0 28px var(--accent-glow);
+    transform: translateY(-1px);
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 bg-transparent text-white text-sm font-semibold px-5 py-[11px] rounded-full cursor-pointer transition-all duration-[250ms] no-underline whitespace-nowrap;
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover {
+    border-color: rgba(123,175,196,0.5);
+    color: var(--accent);
+    box-shadow: 0 0 16px rgba(123,175,196,0.15);
+  }
+
+  /* Contact form input */
+  .contact-input {
+    @apply w-full rounded-xl px-4 py-3 text-sm text-white outline-none transition-all duration-200;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+  }
+  .contact-input::placeholder { color: var(--muted); }
+  .contact-input:focus {
+    border-color: rgba(123,175,196,0.5);
+    box-shadow: 0 0 0 3px rgba(123,175,196,0.08);
+  }
+  .contact-input option { background: #111111; color: #ffffff; }
+
+  /* Dark card */
+  .dark-card {
+    @apply rounded-[20px] p-7 transition-all duration-300;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+  }
+  .dark-card:hover {
+    border-color: rgba(123,175,196,0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.7); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-12px); }
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}
+@keyframes typing-bounce {
+  0%,60%,100% { transform: translateY(0); }
+  30%         { transform: translateY(-6px); }
+}

@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowbit — AI Automation for Ambitious Businesses</title>
+  <meta name="description" content="Flowbit builds custom automation systems that eliminate repetitive work. WhatsApp bots, lead follow-up, client retention — we automate it all, 24/7.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0A;
+      --bg2: #111111;
+      --bg3: #141414;
+      --accent: #AAFF00;
+      --accent-h: #CCFF33;
+      --accent-dim: rgba(170,255,0,0.12);
+      --accent-glow: rgba(170,255,0,0.35);
+      --white: #FFFFFF;
+      --muted: #6B7280;
+      --border: rgba(255,255,255,0.07);
+      --font: 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── Utility ─── */
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-dim); border: 1px solid rgba(170,255,0,0.25);
+      color: var(--accent); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 20px;
+    }
+    .section-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: block; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.7)} }
+
+    .section-title {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.02em; margin-bottom: 14px;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 15px; max-width: 520px; line-height: 1.7;
+    }
+    .highlight { color: var(--accent); }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 14px; font-weight: 600;
+      padding: 11px 22px; border-radius: 100px; cursor: pointer;
+      border: none; transition: all .25s ease; text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent); color: #000;
+    }
+    .btn-primary:hover {
+      background: var(--accent-h);
+      box-shadow: 0 0 28px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+      border-color: rgba(170,255,0,0.4); color: var(--accent);
+      box-shadow: 0 0 16px rgba(170,255,0,0.1);
+    }
+
+    /* ─── Fade-in animation ─── */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: .1s; }
+    .fade-in-delay-2 { transition-delay: .2s; }
+    .fade-in-delay-3 { transition-delay: .3s; }
+    .fade-in-delay-4 { transition-delay: .4s; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background .3s;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; max-width: 1160px; margin: 0 auto; padding: 0 24px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 20px; font-weight: 800; letter-spacing: -0.02em;
+      color: var(--white); text-decoration: none;
+    }
+    .logo-icon {
+      width: 32px; height: 32px; background: var(--accent);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 18px; height: 18px; }
+    .nav-links {
+      display: flex; align-items: center; gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta { display: flex; align-items: center; gap: 12px; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 4px; background: none; border: none;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all .3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      padding: 24px; flex-direction: column; gap: 20px; z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 16px; font-weight: 500; }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: 68px; overflow: hidden;
+    }
+    #particle-canvas {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-glow {
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(170,255,0,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 0;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 60px;
+      width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(170,255,0,0.07); border: 1px solid rgba(170,255,0,0.2);
+      color: var(--accent); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.06em; padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse-dot 2s infinite; }
+    .hero-headline {
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 900; line-height: 1.0;
+      letter-spacing: -0.03em; margin-bottom: 20px;
+    }
+    .typewriter-wrap { display: block; color: var(--accent); min-height: 2.2em; }
+    .cursor { display: inline-block; width: 3px; height: 1em; background: var(--accent); margin-left: 2px; vertical-align: text-bottom; animation: blink .7s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-sub {
+      color: var(--muted); font-size: 15px; line-height: 1.7;
+      max-width: 440px; margin-bottom: 28px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+    .hero-stats {
+      display: flex; gap: 28px; flex-wrap: wrap;
+      border-top: 1px solid var(--border); padding-top: 24px;
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 2px; }
+    .stat-num { font-size: 22px; font-weight: 800; color: var(--accent); }
+    .stat-label { font-size: 13px; color: var(--muted); }
+
+    /* Workflow SVG */
+    .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .workflow-svg-wrap {
+      width: 100%; max-width: 480px;
+      background: rgba(8,10,6,0.92);
+      border: 1px solid rgba(170,255,0,0.18);
+      border-radius: 20px; padding: 20px 20px 16px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 0 80px rgba(170,255,0,0.08), inset 0 0 40px rgba(170,255,0,0.02);
+      animation: float 6s ease-in-out infinite;
+      position: relative; overflow: hidden;
+    }
+    .workflow-svg-wrap::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(170,255,0,0.02) 24px),
+                  repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(170,255,0,0.02) 24px);
+      pointer-events: none; z-index: 0;
+    }
+    .wf-hud-header {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 12px; position: relative; z-index: 1;
+    }
+    .wf-hud-title {
+      font-size: 10px; font-weight: 700; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase; flex: 1;
+    }
+    .wf-hud-badge {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+      background: rgba(170,255,0,0.1); border: 1px solid rgba(170,255,0,0.3);
+      color: var(--accent); padding: 2px 8px; border-radius: 4px;
+    }
+    #wf-canvas { display: block; width: 100%; position: relative; z-index: 1; }
+    .wf-hud-footer {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 12px; padding-top: 12px;
+      border-top: 1px solid rgba(170,255,0,0.1);
+      position: relative; z-index: 1;
+      font-size: 12px; color: var(--muted);
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+    .wf-node {
+      background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 10px 18px;
+      font-size: 13px; font-weight: 600; color: var(--white);
+      text-align: center; position: relative; z-index: 2;
+      transition: border-color .3s;
+    }
+    .wf-node.accent { border-color: var(--accent); color: var(--accent); background: rgba(170,255,0,0.06); }
+    .wf-node.action { border-color: rgba(170,255,0,0.3); }
+
+    .wf-svg { width: 100%; display: block; }
+
+    /* ─── TRUSTED BY ─── */
+    #trusted { padding: 60px 0; border-top: 1px solid var(--border); }
+    .trusted-label { color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; text-align: center; margin-bottom: 32px; }
+    .industry-grid {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 12px;
+    }
+    .industry-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 10px 18px; border-radius: 100px;
+      font-size: 14px; font-weight: 500; color: var(--muted);
+      transition: all .25s;
+    }
+    .industry-chip:hover { border-color: rgba(170,255,0,0.3); color: var(--white); }
+    .industry-chip span { font-size: 18px; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--bg); }
+    .services-header { margin-bottom: 56px; }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .service-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px;
+      transition: all .3s; position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      background: linear-gradient(135deg, rgba(170,255,0,0.04), transparent);
+      transition: opacity .3s;
+    }
+    .service-card:hover { border-color: rgba(170,255,0,0.25); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 44px; height: 44px; background: rgba(170,255,0,0.08);
+      border: 1px solid rgba(170,255,0,0.2);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 16px;
+    }
+    .service-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .service-desc { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+    .service-link {
+      color: var(--accent); font-size: 14px; font-weight: 600;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .service-link:hover { gap: 10px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag {
+      background: rgba(170,255,0,0.06); border: 1px solid rgba(170,255,0,0.15);
+      color: var(--accent); font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 100px; letter-spacing: 0.04em;
+    }
+
+    /* ─── PROCESS ─── */
+    #process { background: var(--bg2); }
+    .process-header { text-align: center; margin-bottom: 70px; }
+    .process-header .section-sub { margin: 0 auto; }
+    .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
+    .process-steps::before {
+      content: ''; position: absolute; top: 40px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+      height: 1px; background: linear-gradient(90deg, var(--accent), rgba(170,255,0,0.2), var(--accent));
+      z-index: 0;
+    }
+    .process-step { text-align: center; padding: 0 24px; position: relative; }
+    .step-num {
+      width: 64px; height: 64px; margin: 0 auto 20px;
+      background: var(--bg); border: 2px solid var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 900; color: var(--accent);
+      position: relative; z-index: 1;
+      box-shadow: 0 0 24px rgba(170,255,0,0.25);
+    }
+    .step-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .step-desc { color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .step-icon { font-size: 26px; margin-bottom: 12px; }
+
+    /* ─── WHATSAPP SPOTLIGHT ─── */
+    #whatsapp { background: var(--bg); }
+    .wa-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 80px;
+    }
+    .wa-content .section-sub { margin-bottom: 28px; }
+    .wa-tabs {
+      display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+    }
+    .wa-tab {
+      padding: 8px 18px; border-radius: 100px; font-size: 13px; font-weight: 600;
+      cursor: pointer; border: 1px solid var(--border); background: var(--bg3);
+      color: var(--muted); transition: all .25s;
+    }
+    .wa-tab.active {
+      background: var(--accent); color: #000; border-color: var(--accent);
+    }
+    .wa-feature-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .wa-feature-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .wa-feature-check {
+      width: 22px; height: 22px; background: rgba(170,255,0,0.1);
+      border: 1px solid rgba(170,255,0,0.3); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-size: 13px; margin-top: 1px;
+    }
+    .wa-feature-text { font-size: 15px; color: var(--muted); line-height: 1.5; }
+    .wa-feature-text strong { color: var(--white); }
+
+    /* Chat mockup */
+    .chat-mockup {
+      background: #0d0d0d; border: 1px solid var(--border);
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    }
+    .chat-header {
+      background: #1a1a1a; padding: 16px 20px;
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .chat-avatar {
+      width: 38px; height: 38px; background: var(--accent);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 700; color: #000; flex-shrink: 0;
+    }
+    .chat-name { font-size: 14px; font-weight: 600; }
+    .chat-status { font-size: 12px; color: var(--accent); }
+    .chat-body { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .msg {
+      max-width: 80%; padding: 10px 14px; border-radius: 14px;
+      font-size: 13px; line-height: 1.5;
+    }
+    .msg.received {
+      background: #1e1e1e; color: var(--white); align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+    .msg.sent {
+      background: rgba(170,255,0,0.15); color: var(--white); align-self: flex-end;
+      border-bottom-right-radius: 4px; border: 1px solid rgba(170,255,0,0.2);
+    }
+    .msg-time { font-size: 10px; color: var(--muted); margin-top: 3px; }
+    .typing-indicator {
+      background: #1e1e1e; padding: 10px 14px; border-radius: 14px;
+      width: fit-content; display: flex; gap: 4px; align-items: center;
+      border-bottom-left-radius: 4px;
+    }
+    .typing-dot {
+      width: 6px; height: 6px; background: var(--muted); border-radius: 50%;
+      animation: typing-bounce .9s infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: .15s; }
+    .typing-dot:nth-child(3) { animation-delay: .3s; }
+    @keyframes typing-bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-6px)} }
+
+    /* ─── INTEGRATIONS ─── */
+    #integrations { background: var(--bg2); }
+    .int-header { text-align: center; margin-bottom: 52px; }
+    .int-header .section-sub { margin: 0 auto; }
+    .int-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .int-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 20px;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      transition: all .25s;
+    }
+    .int-card:hover { border-color: rgba(170,255,0,0.25); transform: translateY(-3px); }
+    .int-card-icon { font-size: 32px; }
+    .int-card-name { font-size: 13px; font-weight: 600; color: var(--muted); }
+
+    /* ─── PRICING ─── */
+    #pricing { background: var(--bg); }
+    .pricing-header { text-align: center; margin-bottom: 56px; }
+    .pricing-header .section-sub { margin: 0 auto; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+    .pricing-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 28px;
+      position: relative; transition: all .3s;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .pricing-card.featured {
+      border-color: rgba(170,255,0,0.4);
+      box-shadow: 0 0 60px rgba(170,255,0,0.1);
+      background: linear-gradient(135deg, #141414, #111);
+    }
+    .pricing-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #000; font-size: 11px; font-weight: 700;
+      padding: 4px 14px; border-radius: 100px; white-space: nowrap;
+      letter-spacing: 0.05em;
+    }
+    .pricing-tier { font-size: 13px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .pricing-price { font-size: 32px; font-weight: 900; margin-bottom: 4px; }
+    .pricing-price span { font-size: 18px; font-weight: 600; color: var(--muted); }
+    .pricing-per { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+    .pricing-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+    .pricing-features { display: flex; flex-direction: column; gap: 13px; margin-bottom: 32px; }
+    .pricing-feat {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--muted);
+    }
+    .pricing-feat .check { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+    .pricing-feat.dim { opacity: .4; }
+    .pricing-btn {
+      width: 100%; display: flex; justify-content: center;
+    }
+    .pricing-btn .btn { width: 100%; justify-content: center; }
+    .pricing-btn .btn-featured {
+      background: var(--accent); color: #000;
+    }
+    .pricing-btn .btn-featured:hover {
+      background: var(--accent-h); box-shadow: 0 0 28px var(--accent-glow);
+    }
+    .pricing-note { text-align: center; color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+    /* ─── FAQ ─── */
+    #faq { background: var(--bg2); }
+    .faq-header { text-align: center; margin-bottom: 52px; }
+    .faq-header .section-sub { margin: 0 auto; }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; transition: border-color .25s;
+    }
+    .faq-item.open { border-color: rgba(170,255,0,0.25); }
+    .faq-question {
+      padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; font-size: 16px; font-weight: 600; gap: 16px;
+      user-select: none;
+    }
+    .faq-arrow {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+      font-size: 14px; transition: transform .3s, background .25s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); background: rgba(170,255,0,0.15); color: var(--accent); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height .4s ease;
+      padding: 0 24px; color: var(--muted); font-size: 15px; line-height: 1.7;
+    }
+    .faq-answer-inner { padding-bottom: 20px; }
+
+    /* ─── CTA BANNER ─── */
+    #cta-banner {
+      background: var(--bg);
+      padding: 100px 0;
+    }
+    .cta-inner {
+      background: var(--bg3);
+      border: 1px solid rgba(170,255,0,0.2);
+      border-radius: 24px; padding: 60px 48px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(170,255,0,0.07) 0%, transparent 65%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .cta-inner .section-title { font-size: clamp(26px, 4vw, 44px); margin-bottom: 14px; position: relative; }
+    .cta-inner .section-sub { margin: 0 auto 36px; position: relative; }
+    .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      padding: 60px 0 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+      margin-bottom: 52px;
+    }
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-tagline { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 260px; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
+    .social-btn {
+      width: 36px; height: 36px; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 16px; text-decoration: none; transition: all .25s;
+    }
+    .social-btn:hover { border-color: rgba(170,255,0,0.3); background: rgba(170,255,0,0.06); }
+    .footer-col-title { font-size: 12px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+    .footer-col-links { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+    .footer-col-links a { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .footer-col-links a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { color: var(--muted); font-size: 13px; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { color: var(--muted); font-size: 13px; text-decoration: none; }
+    .footer-legal a:hover { color: var(--accent); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual { order: -1; }
+      .workflow-svg-wrap { max-width: 380px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+      .wa-inner { grid-template-columns: 1fr; }
+      .int-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .cta-inner { padding: 52px 32px; }
+      .nav-links, .nav-cta .btn-ghost { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 70px 0; }
+      .int-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+      </div>
+      FLOWBIT
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#cta-banner" class="btn btn-ghost" style="padding:10px 20px;font-size:14px;">Contact</a>
+      <a href="#cta-banner" class="btn btn-primary" style="padding:10px 22px;font-size:14px;">Get Started →</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#pricing" class="mobile-link">Pricing</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#cta-banner" class="btn btn-primary" style="text-align:center;justify-content:center;margin-top:8px;">Get Started →</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge fade-in">
+        <div class="hero-badge-dot"></div>
+        AI Automation Agency
+      </div>
+      <h1 class="hero-headline fade-in fade-in-delay-1">
+        Automate Everything.<br>
+        <span class="typewriter-wrap" id="typewriter">Scale Without Limits.<span class="cursor"></span></span>
+      </h1>
+      <p class="hero-sub fade-in fade-in-delay-2">
+        Custom-built automation systems that eliminate repetitive work — so your business runs 24/7 without extra headcount.
+      </p>
+      <div class="hero-actions fade-in fade-in-delay-3">
+        <a href="#cta-banner" class="btn btn-primary">Book a Free Audit →</a>
+        <a href="#process" class="btn btn-ghost">See How It Works</a>
+      </div>
+      <div class="hero-stats fade-in fade-in-delay-4">
+        <div class="stat-item">
+          <span class="stat-num" id="count1">0+</span>
+          <span class="stat-label">Automations Built</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="count2">0+</span>
+          <span class="stat-label">Businesses Served</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">24/7</span>
+          <span class="stat-label">Always On, Always Working</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-in fade-in-delay-2">
+      <div class="workflow-svg-wrap">
+        <div class="wf-hud-header">
+          <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s infinite;flex-shrink:0;"></div>
+          <span class="wf-hud-title">Live Workflow Engine</span>
+          <span class="wf-hud-badge">ACTIVE</span>
+        </div>
+        <canvas id="wf-canvas"></canvas>
+        <div class="wf-hud-footer">
+          <div style="width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse-dot 2s infinite;flex-shrink:0;"></div>
+          <span>Running <strong style="color:var(--white);">3 active automations</strong></span>
+          <span style="margin-left:auto;font-size:10px;opacity:.5;">↑ 12ms avg latency</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUSTED BY ─── -->
+<section id="trusted">
+  <div class="container">
+    <p class="trusted-label">Powering automation across every industry</p>
+    <div class="industry-grid">
+      <div class="industry-chip fade-in"><span>🏘️</span> Real Estate</div>
+      <div class="industry-chip fade-in fade-in-delay-1"><span>🛍️</span> E-commerce</div>
+      <div class="industry-chip fade-in fade-in-delay-2"><span>🏥</span> Healthcare</div>
+      <div class="industry-chip fade-in fade-in-delay-3"><span>🍽️</span> Hospitality</div>
+      <div class="industry-chip fade-in fade-in-delay-1"><span>⚖️</span> Legal</div>
+      <div class="industry-chip fade-in fade-in-delay-2"><span>🎓</span> Education</div>
+      <div class="industry-chip fade-in fade-in-delay-3"><span>💼</span> Financial Services</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="services-header fade-in">
+      <div class="section-tag">What We Build</div>
+      <h2 class="section-title">If It's Repetitive,<br><span class="highlight">We Automate It.</span></h2>
+      <p class="section-sub">Every solution is custom-coded for your exact workflow. No templates. No one-size-fits-all. Just automation that actually works.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">💬</div>
+        <div class="service-title">WhatsApp Automation</div>
+        <p class="service-desc">Your customers text, your business responds — instantly. We build intelligent WhatsApp bots using either pre-programmed logic or Claude AI for fully human-like conversations that close leads while you sleep.</p>
+        <div class="service-tags">
+          <span class="tag">Pre-programmed Flows</span>
+          <span class="tag">Claude AI Conversations</span>
+          <span class="tag">24/7 Response</span>
+        </div>
+        <a href="#cta-banner" class="service-link" style="margin-top:20px;display:inline-flex;">Start automating →</a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-1">
+        <div class="service-icon">🎯</div>
+        <div class="service-title">Lead Follow-Up & Nurture</div>
+        <p class="service-desc">Never lose a hot lead to slow response times again. Automated follow-up sequences that reach out at the perfect moment — personalised, timely, and consistent — without you lifting a finger.</p>
+        <div class="service-tags">
+          <span class="tag">Instant Response</span>
+          <span class="tag">Multi-touch Sequences</span>
+          <span class="tag">CRM Integration</span>
+        </div>
+        <a href="#cta-banner" class="service-link" style="margin-top:20px;display:inline-flex;">Start automating →</a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-2">
+        <div class="service-icon">⭐</div>
+        <div class="service-title">Review & Client Retention</div>
+        <p class="service-desc">Automatically request reviews at the right moment, re-engage inactive clients, and build loyalty workflows that keep your customers coming back. Turn happy customers into raving fans on autopilot.</p>
+        <div class="service-tags">
+          <span class="tag">Review Requests</span>
+          <span class="tag">Retention Flows</span>
+          <span class="tag">Win-back Campaigns</span>
+        </div>
+        <a href="#cta-banner" class="service-link" style="margin-top:20px;display:inline-flex;">Start automating →</a>
+      </div>
+
+      <div class="service-card fade-in fade-in-delay-3">
+        <div class="service-icon">⚙️</div>
+        <div class="service-title">Custom Process Automation</div>
+        <p class="service-desc">Appointment booking, data entry, reporting, invoicing, onboarding — if a human is doing it on repeat, we can automate it. Fully integrated with your existing tools: Google Calendar, CRMs, spreadsheets and more.</p>
+        <div class="service-tags">
+          <span class="tag">Booking Systems</span>
+          <span class="tag">Data Pipelines</span>
+          <span class="tag">Tool Integrations</span>
+        </div>
+        <a href="#cta-banner" class="service-link" style="margin-top:20px;display:inline-flex;">Start automating →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="process-header fade-in">
+      <div class="section-tag">How We Work</div>
+      <h2 class="section-title">Behind Every Great Result Is a<br><span class="highlight">Process That Just Works</span></h2>
+      <p class="section-sub">We don't do templates. Every automation is built from scratch for your specific business. Here's how we go from idea to impact.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step fade-in">
+        <div class="step-num">01</div>
+        <div class="step-icon">🔍</div>
+        <div class="step-title">Discovery</div>
+        <p class="step-desc">We map your exact workflow, identify the highest-impact bottlenecks, and define what we'll automate first. No assumptions — just clarity.</p>
+      </div>
+      <div class="process-step fade-in fade-in-delay-1">
+        <div class="step-num">02</div>
+        <div class="step-icon">🛠️</div>
+        <div class="step-title">Build</div>
+        <p class="step-desc">Custom-coded solution built specifically for you. We choose between structured logic or AI-powered conversation depending on your needs.</p>
+      </div>
+      <div class="process-step fade-in fade-in-delay-2">
+        <div class="step-num">03</div>
+        <div class="step-icon">🚀</div>
+        <div class="step-title">Deploy & Optimise</div>
+        <p class="step-desc">We launch, monitor, and continuously improve your automation. You get monthly reports and we iterate based on real results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHATSAPP SPOTLIGHT ─── -->
+<section id="whatsapp" class="section">
+  <div class="container">
+    <div class="wa-inner">
+      <div class="wa-content fade-in">
+        <div class="section-tag">WhatsApp Automation</div>
+        <h2 class="section-title">Your Customers Text.<br><span class="highlight">Flowbit Answers.</span></h2>
+        <p class="section-sub">Intelligently. Instantly. Around the clock. We build WhatsApp systems that feel like talking to your best salesperson — without the salary.</p>
+
+        <div class="wa-tabs" id="waTabs">
+          <button class="wa-tab active" data-tab="programmed">Pre-programmed Flows</button>
+          <button class="wa-tab" data-tab="ai">AI-Powered Conversations</button>
+        </div>
+
+        <div id="tab-programmed" class="wa-feature-list">
+          <div class="wa-feature-item">
+            <div class="wa-feature-check">✓</div>
+            <p class="wa-feature-text"><strong>Structured decision trees</strong> — guide customers through menus, bookings, and FAQs with zero human involvement</p>
+          </div>
+          <div class="wa-feature-item">
+            <div class="wa-feature-check">✓</div>
+            <p class="wa-feature-text"><strong>Predictable and reliable</strong> — perfect for bookings, order status, support tickets, and lead capture forms</p>
+          </div>
+          <div class="wa-feature-item">
+            <div class="wa-feature-check">✓</div>
+            <p class="wa-feature-text"><strong>Fast to deploy</strong> — built and live in days, not weeks</p>
+          </div>
+        </div>
+
+        <div id="tab-ai" class="wa-feature-list" style="display:none;">
+          <div class="wa-feature-item">
+            <div class="wa-feature-check">✓</div>
+            <p class="wa-feature-text"><strong>Claude API integration</strong> — human-like, context-aware responses that adapt to any question your customers ask</p>
+          </div>
+          <div class="wa-feature-item">
+            <div class="wa-feature-check">✓</div>
+            <p class="wa-feature-text"><strong>Trained on your business</strong> — knows your products, pricing, policies, and tone of voice</p>
+          </div>
+          <div class="wa-feature-item">
+            <div class="wa-feature-check">✓</div>
+            <p class="wa-feature-text"><strong>Closes deals autonomously</strong> — qualifies leads, overcomes objections, and books appointments without you</p>
+          </div>
+        </div>
+
+        <a href="#cta-banner" class="btn btn-primary">Build My WhatsApp Bot →</a>
+      </div>
+
+      <div class="chat-mockup fade-in fade-in-delay-2">
+        <div class="chat-header">
+          <div class="chat-avatar">F</div>
+          <div>
+            <div class="chat-name">Flowbit Assistant</div>
+            <div class="chat-status">● Online — responding instantly</div>
+          </div>
+        </div>
+        <div class="chat-body">
+          <div class="msg received">
+            Hi! 👋 Thanks for reaching out. I'm the Flowbit assistant — how can I help you today?
+            <div class="msg-time">09:41 AM</div>
+          </div>
+          <div class="msg sent">
+            Hi, I'm interested in automating my client follow-ups. We're losing leads because we respond too slowly.
+            <div class="msg-time">09:42 AM</div>
+          </div>
+          <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+          <div class="msg received">
+            That's a very common problem — and one we fix all the time! With our lead follow-up automation, your new enquiries get a personalised reply in under 60 seconds, 24/7. 🚀
+            <br><br>Would you like to book a free 30-minute audit to see exactly what we'd build for you?
+            <div class="msg-time">09:42 AM</div>
+          </div>
+          <div class="msg sent">
+            Yes, that sounds great!
+            <div class="msg-time">09:43 AM</div>
+          </div>
+          <div class="msg received">
+            Perfect! Here's my calendar — pick a time that works for you 👇<br><br>
+            📅 <span style="color:var(--accent);text-decoration:underline;">flowbit.co/book</span>
+            <div class="msg-time">09:43 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INTEGRATIONS ─── -->
+<section id="integrations" class="section">
+  <div class="container">
+    <div class="int-header fade-in">
+      <div class="section-tag">Integrations</div>
+      <h2 class="section-title">Works With Your<br><span class="highlight">Existing Tools</span></h2>
+      <p class="section-sub">No need to change how you work. We plug into the tools you already use and make them work together automatically.</p>
+    </div>
+    <div class="int-grid">
+      <div class="int-card fade-in"><div class="int-card-icon">💬</div><div class="int-card-name">WhatsApp</div></div>
+      <div class="int-card fade-in fade-in-delay-1"><div class="int-card-icon">📅</div><div class="int-card-name">Google Calendar</div></div>
+      <div class="int-card fade-in fade-in-delay-2"><div class="int-card-icon">📊</div><div class="int-card-name">Google Sheets</div></div>
+      <div class="int-card fade-in fade-in-delay-3"><div class="int-card-icon">📧</div><div class="int-card-name">Gmail</div></div>
+      <div class="int-card fade-in"><div class="int-card-icon">🤝</div><div class="int-card-name">HubSpot CRM</div></div>
+      <div class="int-card fade-in fade-in-delay-1"><div class="int-card-icon">⚡</div><div class="int-card-name">Zapier</div></div>
+      <div class="int-card fade-in fade-in-delay-2"><div class="int-card-icon">💬</div><div class="int-card-name">Slack</div></div>
+      <div class="int-card fade-in fade-in-delay-3"><div class="int-card-icon">📝</div><div class="int-card-name">Notion</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ─── -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="pricing-header fade-in">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-title">Simple, Transparent<br><span class="highlight">Monthly Retainers</span></h2>
+      <p class="section-sub">No hidden fees. No lock-in contracts. Just automation that pays for itself — usually within the first week.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="pricing-card fade-in">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-price">R2,500 <span>/mo</span></div>
+        <div class="pricing-per">Billed monthly · Cancel anytime</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-features">
+          <div class="pricing-feat"><span class="check">✓</span> 1 custom automation</div>
+          <div class="pricing-feat"><span class="check">✓</span> WhatsApp flow or lead follow-up</div>
+          <div class="pricing-feat"><span class="check">✓</span> Up to 2 tool integrations</div>
+          <div class="pricing-feat"><span class="check">✓</span> Monthly performance report</div>
+          <div class="pricing-feat"><span class="check">✓</span> Email support</div>
+          <div class="pricing-feat dim"><span class="check">✗</span> AI-powered conversations</div>
+          <div class="pricing-feat dim"><span class="check">✗</span> Priority build queue</div>
+        </div>
+        <div class="pricing-btn">
+          <a href="#cta-banner" class="btn btn-ghost" style="width:100%;justify-content:center;">Get Started →</a>
+        </div>
+      </div>
+
+      <div class="pricing-card featured fade-in fade-in-delay-1">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier" style="color:var(--accent);">Growth</div>
+        <div class="pricing-price">R4,500 <span>/mo</span></div>
+        <div class="pricing-per">Billed monthly · Cancel anytime</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-features">
+          <div class="pricing-feat"><span class="check">✓</span> Up to 3 custom automations</div>
+          <div class="pricing-feat"><span class="check">✓</span> WhatsApp + lead nurture + retention</div>
+          <div class="pricing-feat"><span class="check">✓</span> Unlimited tool integrations</div>
+          <div class="pricing-feat"><span class="check">✓</span> Weekly performance report</div>
+          <div class="pricing-feat"><span class="check">✓</span> Priority support</div>
+          <div class="pricing-feat"><span class="check">✓</span> AI-powered conversations (Claude API)</div>
+          <div class="pricing-feat dim"><span class="check">✗</span> Dedicated account manager</div>
+        </div>
+        <div class="pricing-btn">
+          <a href="#cta-banner" class="btn btn-primary btn-featured" style="width:100%;justify-content:center;">Get Started →</a>
+        </div>
+      </div>
+
+      <div class="pricing-card fade-in fade-in-delay-2">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-price" style="font-size:32px;">Custom</div>
+        <div class="pricing-per">Let's talk about your needs</div>
+        <div class="pricing-divider"></div>
+        <div class="pricing-features">
+          <div class="pricing-feat"><span class="check">✓</span> Unlimited automations</div>
+          <div class="pricing-feat"><span class="check">✓</span> Full custom suite</div>
+          <div class="pricing-feat"><span class="check">✓</span> All integrations included</div>
+          <div class="pricing-feat"><span class="check">✓</span> Real-time dashboards</div>
+          <div class="pricing-feat"><span class="check">✓</span> Dedicated account manager</div>
+          <div class="pricing-feat"><span class="check">✓</span> AI-powered conversations</div>
+          <div class="pricing-feat"><span class="check">✓</span> SLA guarantee</div>
+        </div>
+        <div class="pricing-btn">
+          <a href="#cta-banner" class="btn btn-ghost" style="width:100%;justify-content:center;">Book a Call →</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="pricing-note">All plans include a free discovery call and initial workflow audit. Pricing in South African Rand.</p>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="faq-header fade-in">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title">Questions You're<br><span class="highlight">Probably Thinking</span></h2>
+      <p class="section-sub">Everything you need to know before we start automating your business.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-in">
+        <div class="faq-question">
+          What exactly is a custom automation?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">A custom automation is code we build specifically for your business that handles a repetitive task without any human involvement. Unlike off-the-shelf tools like Zapier (which just connect apps), we write the actual logic, intelligence, and workflows tailored to how YOUR business operates. The result feels purpose-built — because it is.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-1">
+        <div class="faq-question">
+          How long does it take to build and go live?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Most automations are live within 5–10 business days after our discovery call. Simpler flows (like a WhatsApp lead capture) can be done in 2–3 days. More complex systems with AI integration and multiple tool connections typically take 1–2 weeks. We give you a clear timeline after the initial audit.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-2">
+        <div class="faq-question">
+          Do I need to be technical to work with Flowbit?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Not at all. You just need to know your business and its pain points. We handle all the technical implementation. You'll never need to look at a line of code — we explain everything in plain language and train your team on how to use the system we build.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in fade-in-delay-3">
+        <div class="faq-question">
+          What if I want changes after the automation is live?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Your monthly retainer includes ongoing support and iterations. As your business evolves, we update your automations. Minor tweaks (wording changes, new responses) are handled within 24–48 hours. Larger feature additions are scoped and priced transparently before we build.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-question">
+          Do you use AI or pre-programmed logic?
+          <div class="faq-arrow">+</div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Both — and we help you choose the right approach. Pre-programmed logic is faster, cheaper, and more predictable (great for structured workflows like bookings or FAQs). AI integration (using the Claude API) is better when you need natural, dynamic conversations that handle anything a customer might say. Many clients use a combination of both.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BANNER ─── -->
+<section id="cta-banner">
+  <div class="container">
+    <div class="cta-inner fade-in">
+      <div class="cta-glow"></div>
+      <div class="section-tag" style="margin:0 auto 24px;">Free Audit — No Commitment</div>
+      <h2 class="section-title">Ready to Stop<br><span class="highlight">Doing It Manually?</span></h2>
+      <p class="section-sub">Book a free 30-minute audit and we'll map out exactly what to automate first — and the ROI you can expect.</p>
+      <div class="cta-actions">
+        <a href="mailto:flowbit123@gmail.com?subject=Free Automation Audit Request" class="btn btn-primary" style="font-size:15px;padding:13px 28px;">Book Free Audit →</a>
+        <a href="mailto:flowbit123@gmail.com" class="btn btn-ghost" style="font-size:15px;padding:13px 28px;">📧 Email Us</a>
+      </div>
+      <p style="margin-top:20px;font-size:13px;color:var(--muted);position:relative;">flowbit123@gmail.com · Response within 24 hours</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="logo" style="margin-bottom:16px;display:inline-flex;">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          FLOWBIT
+        </a>
+        <p class="footer-tagline">Custom-built automation systems for ambitious businesses worldwide. If it's repetitive, we automate it.</p>
+        <div class="footer-social">
+          <a href="mailto:flowbit123@gmail.com" class="social-btn" title="Email">📧</a>
+          <a href="#" class="social-btn" title="WhatsApp">💬</a>
+          <a href="#" class="social-btn" title="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-col-links">
+          <li><a href="#services">WhatsApp Automation</a></li>
+          <li><a href="#services">Lead Follow-Up</a></li>
+          <li><a href="#services">Review & Retention</a></li>
+          <li><a href="#services">Custom Workflows</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-col-links">
+          <li><a href="#process">How We Work</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#cta-banner">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-col-links">
+          <li><a href="mailto:flowbit123@gmail.com">flowbit123@gmail.com</a></li>
+          <li><a href="#cta-banner">Book a Free Audit</a></li>
+          <li><a href="#cta-banner">Start a Project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Flowbit. All rights reserved. Built for ambitious businesses worldwide.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ─── Orbiting AI Core Canvas ─── */
+  (function initWorkflow() {
+    const canvas = document.getElementById('wf-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const dpr = window.devicePixelRatio || 1;
+    const W = 420, H = 300;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width  = '100%';
+    canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+
+    const G = '#AAFF00';
+    /* Orb sits left-of-centre; stats fill the right column */
+    const OCX = 168, OCY = 150, ORB = 46;
+
+    /* Two elliptical orbital rings – rx/ry create the 3-D tilt */
+    const RINGS = [
+      { rx: 88,  ry: 30 },
+      { rx: 145, ry: 48 },
+    ];
+
+    const orbitals = [
+      { icon:'💬', label:'WhatsApp',  a: 0.0,  ring:0, spd:0.0095 },
+      { icon:'📧', label:'Gmail',     a: 2.1,  ring:0, spd:0.0082 },
+      { icon:'📅', label:'Calendar',  a: 4.3,  ring:0, spd:0.0100 },
+      { icon:'💼', label:'Slack',     a: 0.5,  ring:1, spd:0.0052 },
+      { icon:'🤝', label:'CRM',       a: 2.3,  ring:1, spd:0.0058 },
+      { icon:'📊', label:'Sheets',    a: 3.9,  ring:1, spd:0.0046 },
+      { icon:'📝', label:'Notion',    a: 5.5,  ring:1, spd:0.0054 },
+    ];
+
+    let tick = 0;
+
+    /* ── helpers ── */
+    function pos(o) {
+      const r = RINGS[o.ring];
+      const x = OCX + Math.cos(o.a) * r.rx;
+      const y = OCY + Math.sin(o.a) * r.ry;
+      const depth = Math.sin(o.a);           /* -1 = behind, +1 = front */
+      return { x, y, depth };
+    }
+
+    /* ── dashed ellipse orbit tracks ── */
+    function drawTracks() {
+      RINGS.forEach(r => {
+        ctx.save();
+        ctx.setLineDash([3, 7]);
+        ctx.beginPath();
+        ctx.ellipse(OCX, OCY, r.rx, r.ry, 0, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(170,255,0,0.07)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.restore();
+      });
+    }
+
+    /* ── thin line + travelling dot from orb edge to each icon ── */
+    function drawConnection(o) {
+      const p   = pos(o);
+      const dx  = p.x - OCX, dy = p.y - OCY;
+      const len = Math.sqrt(dx*dx + dy*dy) || 1;
+      const ex  = OCX + (dx/len)*(ORB+3);
+      const ey  = OCY + (dy/len)*(ORB+3);
+      const a   = ((p.depth + 1) * 0.5) * 0.28 + 0.04;
+
+      ctx.beginPath();
+      ctx.moveTo(ex, ey);
+      ctx.lineTo(p.x, p.y);
+      ctx.strokeStyle = `rgba(170,255,0,${a})`;
+      ctx.lineWidth = 0.9;
+      ctx.stroke();
+
+      /* travelling pulse dot */
+      const t  = (Math.sin(tick * 0.045 + o.a * 2) * 0.5 + 0.5);
+      const px = ex + (p.x - ex) * t;
+      const py = ey + (p.y - ey) * t;
+      ctx.save();
+      ctx.shadowBlur = 10; ctx.shadowColor = G;
+      ctx.beginPath(); ctx.arc(px, py, 2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(170,255,0,${a * 3.5})`; ctx.fill();
+      ctx.restore();
+    }
+
+    /* ── single orbiting icon bubble ── */
+    function drawOrbital(o) {
+      const p = pos(o);
+      if (p.depth < -0.72) return;            /* hide when far behind */
+
+      const scale  = 0.62 + (p.depth + 1) * 0.5 * 0.52;   /* 0.62–1.14 */
+      const alpha  = 0.42 + (p.depth + 1) * 0.5 * 0.58;   /* 0.42–1.0  */
+      const r      = 18 * scale;
+
+      ctx.save();
+      ctx.globalAlpha = alpha;
+
+      /* outer halo for front icons */
+      if (p.depth > 0.15) {
+        const halo = ctx.createRadialGradient(p.x, p.y, r * 0.6, p.x, p.y, r * 2.2);
+        halo.addColorStop(0, 'rgba(170,255,0,0.12)');
+        halo.addColorStop(1, 'transparent');
+        ctx.beginPath(); ctx.arc(p.x, p.y, r * 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = halo; ctx.fill();
+      }
+
+      /* icon circle */
+      ctx.save();
+      ctx.shadowBlur = p.depth > 0 ? 14 : 4;
+      ctx.shadowColor = 'rgba(170,255,0,0.45)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(10,14,5,0.96)'; ctx.fill();
+      ctx.strokeStyle = `rgba(170,255,0,${0.32 + p.depth * 0.38})`;
+      ctx.lineWidth = 1.1; ctx.stroke();
+      ctx.restore();
+
+      /* emoji icon */
+      ctx.font = `${Math.round(13 * scale)}px sans-serif`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(o.icon, p.x, p.y + 1);
+
+      /* label — only when clearly in front */
+      if (p.depth > 0.25) {
+        ctx.font = `bold ${Math.round(8 * scale)}px Inter,sans-serif`;
+        ctx.fillStyle = `rgba(170,255,0,${alpha * 0.78})`;
+        ctx.textBaseline = 'top';
+        ctx.fillText(o.label, p.x, p.y + r + 3 * scale);
+      }
+
+      ctx.restore();
+    }
+
+    /* ── central glowing orb ── */
+    function drawOrb() {
+      const pulse = Math.sin(tick * 0.027) * 0.5 + 0.5;
+
+      /* ambient glow layers */
+      [100, 76, 56].forEach((gr, i) => {
+        const a = [0.03, 0.06, 0.11][i];
+        const g = ctx.createRadialGradient(OCX, OCY, 0, OCX, OCY, gr);
+        g.addColorStop(0, `rgba(170,255,0,${a})`);
+        g.addColorStop(1, 'transparent');
+        ctx.beginPath(); ctx.arc(OCX, OCY, gr, 0, Math.PI * 2);
+        ctx.fillStyle = g; ctx.fill();
+      });
+
+      /* orb body */
+      const bg = ctx.createRadialGradient(OCX - 12, OCY - 12, 4, OCX, OCY, ORB);
+      bg.addColorStop(0,   'rgba(62, 82, 26, 0.97)');
+      bg.addColorStop(0.4, 'rgba(28, 38, 12, 0.98)');
+      bg.addColorStop(1,   'rgba( 7, 10,  3, 0.99)');
+      ctx.beginPath(); ctx.arc(OCX, OCY, ORB, 0, Math.PI * 2);
+      ctx.fillStyle = bg; ctx.fill();
+
+      /* orb border */
+      ctx.save();
+      ctx.shadowBlur = 20 + pulse * 14; ctx.shadowColor = G;
+      ctx.beginPath(); ctx.arc(OCX, OCY, ORB, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(170,255,0,${0.5 + pulse * 0.35})`;
+      ctx.lineWidth = 1.6; ctx.stroke();
+      ctx.restore();
+
+      /* spinning arcs */
+      ctx.save(); ctx.translate(OCX, OCY);
+      ctx.beginPath();
+      ctx.arc(0, 0, ORB + 11, tick * 0.022, tick * 0.022 + Math.PI * 1.5);
+      ctx.strokeStyle = `rgba(170,255,0,${0.18 + pulse * 0.12})`; ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, ORB + 20, -tick * 0.017, -tick * 0.017 + Math.PI * 0.75);
+      ctx.strokeStyle = `rgba(170,255,0,${0.1 + pulse * 0.07})`; ctx.lineWidth = 0.7; ctx.stroke();
+      /* third tight ring */
+      ctx.beginPath();
+      ctx.arc(0, 0, ORB + 5,  tick * 0.035, tick * 0.035 + Math.PI * 0.5);
+      ctx.strokeStyle = `rgba(170,255,0,${0.25 + pulse * 0.15})`; ctx.lineWidth = 1.2; ctx.stroke();
+      ctx.restore();
+
+      /* label */
+      ctx.save();
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.shadowBlur = 10; ctx.shadowColor = G;
+      ctx.font = 'bold 12px Inter,sans-serif'; ctx.fillStyle = G;
+      ctx.fillText('AI CORE', OCX, OCY - 9);
+      ctx.shadowBlur = 0;
+      ctx.font = '9px Inter,sans-serif'; ctx.fillStyle = 'rgba(255,255,255,0.42)';
+      ctx.fillText('Claude API', OCX, OCY + 6);
+      /* processing dots */
+      [-8, 0, 8].forEach((dx, di) => {
+        const dp = Math.sin(tick * 0.09 + di * 1.25) * 0.5 + 0.5;
+        ctx.beginPath(); ctx.arc(OCX + dx, OCY + 20, 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(170,255,0,${0.25 + dp * 0.75})`; ctx.fill();
+      });
+      ctx.restore();
+    }
+
+    /* ── right-side stat readout ── */
+    function drawStats() {
+      const stats = [
+        { val: '100%', sub: 'Response rate' },
+        { val: '24/7',  sub: 'Always active'  },
+        { val: '< 1s',  sub: 'Reply time'     },
+      ];
+      const sx = W - 94, sy = 72;
+      ctx.textAlign = 'left';
+      stats.forEach((s, i) => {
+        const pulse = Math.sin(tick * 0.022 + i * 0.9) * 0.5 + 0.5;
+        const y = sy + i * 68;
+
+        ctx.save();
+        ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(255,255,255,0.15)';
+        ctx.font = 'bold 22px Inter,sans-serif';
+        ctx.fillStyle = `rgba(255,255,255,${0.82 + pulse * 0.18})`;
+        ctx.fillText(s.val, sx, y);
+        ctx.restore();
+
+        ctx.font = '10px Inter,sans-serif';
+        ctx.fillStyle = 'rgba(107,114,128,0.88)';
+        ctx.fillText(s.sub, sx, y + 16);
+
+        /* neon accent underline */
+        ctx.beginPath(); ctx.moveTo(sx, y + 24); ctx.lineTo(sx + 36, y + 24);
+        ctx.strokeStyle = `rgba(170,255,0,${0.18 + pulse * 0.22})`;
+        ctx.lineWidth = 0.9; ctx.stroke();
+      });
+    }
+
+    /* ── main render loop ── */
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      drawTracks();
+
+      /* depth-sort for correct overlap: back icons first, orb, front icons */
+      const sorted = orbitals.slice().sort((a, b) => pos(a).depth - pos(b).depth);
+      const behind = sorted.filter(o => pos(o).depth <  0);
+      const front  = sorted.filter(o => pos(o).depth >= 0);
+
+      /* draw all connector lines first (under icons) */
+      orbitals.forEach(drawConnection);
+
+      behind.forEach(drawOrbital);
+      drawOrb();
+      front.forEach(drawOrbital);
+
+      drawStats();
+
+      /* advance orbital angles */
+      orbitals.forEach(o => { o.a += o.spd; });
+      tick++;
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  })();
+
+  /* ─── Hamburger menu ─── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  /* ─── Scroll fade-in ─── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  /* ─── Typewriter ─── */
+  const phrases = ['Scale Without Limits.', 'WhatsApp Automation.', 'Close Leads 24/7.', 'Retain More Clients.', 'Eliminate Manual Work.'];
+  let pi = 0, ci = 0, deleting = false;
+  const tw = document.getElementById('typewriter');
+  function typeLoop() {
+    const phrase = phrases[pi];
+    const cur = tw.childNodes[0];
+    if (!deleting) {
+      tw.childNodes[0] ? tw.childNodes[0].textContent = phrase.slice(0, ci++) : tw.prepend(document.createTextNode(phrase.slice(0, ci++)));
+      if (ci > phrase.length) { deleting = true; setTimeout(typeLoop, 1800); return; }
+    } else {
+      if (tw.childNodes[0]) tw.childNodes[0].textContent = phrase.slice(0, --ci);
+      if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(typeLoop, 300); return; }
+    }
+    setTimeout(typeLoop, deleting ? 40 : 70);
+  }
+  // Re-init typewriter properly
+  tw.innerHTML = '<span class="cursor"></span>';
+  let twText = '';
+  let twPhrase = phrases[0];
+  let twIdx = 0;
+  let twDeleting = false;
+  let twPhraseIdx = 0;
+  function typeWriter() {
+    const full = phrases[twPhraseIdx];
+    if (!twDeleting) {
+      twText = full.slice(0, ++twIdx);
+    } else {
+      twText = full.slice(0, --twIdx);
+    }
+    const cursor = tw.querySelector('.cursor');
+    tw.textContent = twText;
+    tw.appendChild(cursor);
+    if (!twDeleting && twText === full) {
+      setTimeout(() => { twDeleting = true; setTimeout(typeWriter, 50); }, 2000);
+    } else if (twDeleting && twText === '') {
+      twDeleting = false;
+      twPhraseIdx = (twPhraseIdx + 1) % phrases.length;
+      twIdx = 0;
+      setTimeout(typeWriter, 400);
+    } else {
+      setTimeout(typeWriter, twDeleting ? 45 : 80);
+    }
+  }
+  setTimeout(typeWriter, 800);
+
+  /* ─── Count-up stats ─── */
+  function animateCount(el, target, suffix) {
+    let start = 0;
+    const step = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { el.textContent = target + suffix; clearInterval(timer); return; }
+      el.textContent = start + suffix;
+    }, 30);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(document.getElementById('count1'), 200, '+');
+        animateCount(document.getElementById('count2'), 50, '+');
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  const statsEl = document.querySelector('.hero-stats');
+  if (statsEl) statsObserver.observe(statsEl);
+
+  /* ─── Particle canvas ─── */
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.5 + 0.3;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+      this.alpha = Math.random() * 0.4 + 0.1;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(170,255,0,${this.alpha})`;
+      ctx.fill();
+    }
+  }
+  function initParticles() {
+    particles = [];
+    const count = Math.floor((W * H) / 12000);
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(170,255,0,${0.08 * (1 - dist / 100)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+  function animateParticles() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawConnections();
+    requestAnimationFrame(animateParticles);
+  }
+  window.addEventListener('resize', () => { resize(); initParticles(); });
+  resize(); initParticles(); animateParticles();
+
+  /* ─── WhatsApp tabs ─── */
+  document.querySelectorAll('.wa-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.wa-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const which = tab.dataset.tab;
+      document.getElementById('tab-programmed').style.display = which === 'programmed' ? 'flex' : 'none';
+      document.getElementById('tab-ai').style.display = which === 'ai' ? 'flex' : 'none';
+    });
+  });
+
+  /* ─── FAQ accordion ─── */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        const ans = item.querySelector('.faq-answer');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ─── Navbar background on scroll ─── */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.background = window.scrollY > 20 ? 'rgba(10,10,10,0.95)' : 'rgba(10,10,10,0.7)';
+  });
+</script>
+</body>
+</html>
