@@ -237,26 +237,39 @@ export default function WorkflowCanvas() {
     }
 
     let animId
+    let visible = true
+
+    const observer = new IntersectionObserver(
+      ([entry]) => { visible = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    observer.observe(canvas)
+
     function draw() {
-      ctx.clearRect(0, 0, W, H)
-      drawTracks()
+      if (visible && !document.hidden) {
+        ctx.clearRect(0, 0, W, H)
+        drawTracks()
 
-      const sorted = orbitals.slice().sort((a, b) => getPos(a).depth - getPos(b).depth)
-      const behind = sorted.filter(o => getPos(o).depth <  0)
-      const front  = sorted.filter(o => getPos(o).depth >= 0)
+        const sorted = orbitals.slice().sort((a, b) => getPos(a).depth - getPos(b).depth)
+        const behind = sorted.filter(o => getPos(o).depth <  0)
+        const front  = sorted.filter(o => getPos(o).depth >= 0)
 
-      orbitals.forEach(drawConnection)
-      behind.forEach(drawOrbital)
-      drawOrb()
-      front.forEach(drawOrbital)
+        orbitals.forEach(drawConnection)
+        behind.forEach(drawOrbital)
+        drawOrb()
+        front.forEach(drawOrbital)
 
-      orbitals.forEach(o => { o.a += o.spd })
-      tick++
+        orbitals.forEach(o => { o.a += o.spd })
+        tick++
+      }
       animId = requestAnimationFrame(draw)
     }
 
     draw()
-    return () => cancelAnimationFrame(animId)
+    return () => {
+      cancelAnimationFrame(animId)
+      observer.disconnect()
+    }
   }, [])
 
   return (

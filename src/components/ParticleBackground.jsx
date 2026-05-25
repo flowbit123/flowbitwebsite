@@ -15,10 +15,10 @@ export default function ParticleBackground() {
       reset() {
         this.x     = Math.random() * W
         this.y     = Math.random() * H
-        this.r     = Math.random() * 1.8 + 0.4
-        this.vx    = (Math.random() - 0.5) * 0.3
-        this.vy    = (Math.random() - 0.5) * 0.3
-        this.alpha = Math.random() * 0.55 + 0.15
+        this.r     = Math.random() * 1.5 + 0.3
+        this.vx    = (Math.random() - 0.5) * 0.25
+        this.vy    = (Math.random() - 0.5) * 0.25
+        this.alpha = Math.random() * 0.45 + 0.1
       }
       update() {
         this.x += this.vx; this.y += this.vy
@@ -33,44 +33,34 @@ export default function ParticleBackground() {
     }
 
     function resize() {
+      // Fixed to viewport only — not full page height
       W = canvas.width  = window.innerWidth
-      H = canvas.height = document.documentElement.scrollHeight
+      H = canvas.height = window.innerHeight
+      init()
     }
 
     function init() {
       particles = []
-      const count = Math.floor((W * H) / 9000)
+      // Cap at 60 particles max — enough for visual, not O(n²) expensive
+      const count = Math.min(60, Math.floor((W * H) / 18000))
       for (let i = 0; i < count; i++) particles.push(new Particle())
     }
 
-    function drawConnections() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 100) {
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(255,255,255,${0.12 * (1 - dist / 100)})`
-            ctx.lineWidth   = 0.5
-            ctx.stroke()
-          }
-        }
-      }
-    }
-
     function animate() {
+      // Pause when tab is hidden
+      if (document.hidden) {
+        animId = requestAnimationFrame(animate)
+        return
+      }
       ctx.clearRect(0, 0, W, H)
       particles.forEach(p => { p.update(); p.draw() })
-      drawConnections()
       animId = requestAnimationFrame(animate)
     }
 
-    const onResize = () => { resize(); init() }
+    const onResize = () => resize()
     window.addEventListener('resize', onResize)
-    resize(); init(); animate()
+    resize()
+    animate()
 
     return () => {
       cancelAnimationFrame(animId)
