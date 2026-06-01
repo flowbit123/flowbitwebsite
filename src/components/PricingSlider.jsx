@@ -17,22 +17,10 @@ const TIERS = [
     price: 'From R2,500/month',
   },
   {
-    label: 'Review & Retention Bot',
-    desc: 'Automatically request reviews at the perfect moment, reengage inactive clients and run loyalty flows that keep customers coming back without you lifting a finger.',
-    features: [
-      'Everything in Lead Qualification',
-      'Automated review requests (Google, Facebook)',
-      'Win back campaigns for inactive clients',
-      'Loyalty and referral flow',
-      'Sentiment tracking and alerts',
-    ],
-    price: 'From R2,900/month',
-  },
-  {
     label: 'Booking Automation',
     desc: 'Full end to end booking automation. Client messages, bot qualifies, checks availability and books directly into your calendar. No human needed.',
     features: [
-      'Everything in Review & Retention',
+      'Everything in Lead Qualification',
       'Google Calendar integration',
       'Real-time availability checking',
       'Automatic booking confirmation',
