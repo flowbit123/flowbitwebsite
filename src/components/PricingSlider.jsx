@@ -121,39 +121,33 @@ export default function PricingSlider() {
           />
         </div>
 
-        {/* Tier labels */}
-        <div className="flex justify-between mb-10 px-0.5">
-          {TIERS.map((t, i) => (
-            <button
-              key={i}
-              onClick={() => setTier(i)}
-              className="flex flex-col items-center gap-1 group cursor-pointer bg-transparent border-none p-0"
-              style={{ flex: 1 }}
-            >
-              {t.popular && (
-                <span
-                  className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full mb-0.5"
-                  style={{ background: ACCENT, color: '#000' }}
-                >
-                  Most Popular
-                </span>
-              )}
-              {!t.popular && <span className="h-5" />}
-              <span
-                className="text-[11px] font-semibold text-center leading-tight transition-colors duration-200"
-                style={{ color: tier === i ? ACCENT : 'rgba(255,255,255,0.35)' }}
+        {/* Tier labels — absolutely positioned to match slider stop math */}
+        <div className="relative mb-10" style={{ height: '44px' }}>
+          {TIERS.map((t, i) => {
+            const left = (i / (TIERS.length - 1)) * 100
+            return (
+              <button
+                key={i}
+                onClick={() => setTier(i)}
+                className="absolute flex flex-col items-center gap-1 cursor-pointer bg-transparent border-none p-0"
+                style={{ left: `${left}%`, transform: 'translateX(-50%)' }}
               >
-                {t.label}
-              </span>
-              <span
-                className="w-1.5 h-1.5 rounded-full mt-0.5 transition-all duration-200"
-                style={{
-                  background: tier === i ? ACCENT : 'rgba(255,255,255,0.18)',
-                  boxShadow: tier === i ? `0 0 8px ${ACCENT}` : 'none',
-                }}
-              />
-            </button>
-          ))}
+                <span
+                  className="text-[11px] font-semibold text-center leading-tight transition-colors duration-200 whitespace-nowrap"
+                  style={{ color: tier === i ? ACCENT : 'rgba(255,255,255,0.35)' }}
+                >
+                  {t.label}
+                </span>
+                <span
+                  className="w-1.5 h-1.5 rounded-full mt-0.5 transition-all duration-200"
+                  style={{
+                    background: tier === i ? ACCENT : 'rgba(255,255,255,0.18)',
+                    boxShadow: tier === i ? `0 0 8px ${ACCENT}` : 'none',
+                  }}
+                />
+              </button>
+            )
+          })}
         </div>
 
         {/* Content panel */}
