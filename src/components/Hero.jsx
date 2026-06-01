@@ -147,7 +147,7 @@ export default function Hero() {
 
         {/* ── Right: orbital canvas ── */}
         <motion.div
-          className="flex items-center justify-center"
+          className="hidden md:flex items-center justify-center"
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
