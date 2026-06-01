@@ -6,21 +6,10 @@ const ACCENT_DIM  = 'rgba(123,175,196,0.22)'
 
 const TIERS = [
   {
-    label: 'Basic Auto Reply',
-    desc: 'Instant automated responses to incoming messages. Never leave a lead waiting. Works on WhatsApp, Instagram DM or website chat.',
-    features: [
-      'Instant reply to enquiries',
-      'Custom greeting message',
-      'Lead capture (name and number)',
-      'Handoff to human when needed',
-    ],
-    price: 'From R1,500/month',
-  },
-  {
     label: 'Lead Qualification Bot',
     desc: 'The bot asks the right questions, qualifies the lead and sends you a summary so you only spend time on serious prospects.',
     features: [
-      'Everything in Basic',
+      'Instant reply to enquiries',
       'Qualifying questions flow',
       'Lead scoring and summary',
       'Notification to owner via WhatsApp or email',

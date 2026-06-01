@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { SiWhatsapp } from 'react-icons/si'
-import { TbTarget, TbStars, TbSettings2, TbHeadset, TbPhoneCall } from 'react-icons/tb'
+import { TbTarget, TbSettings2, TbHeadset, TbPhoneCall } from 'react-icons/tb'
 
 const SERVICES = [
   {
@@ -16,13 +16,6 @@ const SERVICES = [
     title: 'Lead Follow-Up & Nurture',
     desc: 'Never lose a hot lead to slow response times again. Automated follow up sequences that reach out at the perfect moment, personalised, timely, and consistent, without you lifting a finger.',
     tags: ['Instant Response', 'Multi Touch Sequences', 'CRM Integration'],
-  },
-  {
-    Icon: TbStars,
-    color: '#7BAFC4',
-    title: 'Review & Client Retention',
-    desc: 'Automatically request reviews at the right moment, reengage inactive clients, and build loyalty workflows that keep your customers coming back. Turn happy customers into raving fans on autopilot.',
-    tags: ['Review Requests', 'Retention Flows', 'Win Back Campaigns'],
   },
   {
     Icon: TbSettings2,
