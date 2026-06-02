@@ -14,7 +14,6 @@ const TIERS = [
       'Lead scoring and summary',
       'Notification to owner via WhatsApp or email',
     ],
-    price: 'From R2,500/month',
   },
   {
     label: 'Booking Automation',
@@ -26,7 +25,6 @@ const TIERS = [
       'Automatic booking confirmation',
       'Reschedule and cancel handling',
     ],
-    price: 'From R3,900/month',
   },
   {
     label: 'Outbound Sales Agent',
@@ -38,7 +36,6 @@ const TIERS = [
       'Reengagement of cold prospects',
       'Meeting booking and CRM updates',
     ],
-    price: 'From R5,500/month',
   },
   {
     label: 'Full AI Receptionist',
@@ -50,7 +47,6 @@ const TIERS = [
       'English and Afrikaans support',
       'Monthly performance report',
     ],
-    price: 'From R6,500/month',
   },
 ]
 
@@ -185,19 +181,14 @@ export default function PricingSlider() {
               ))}
             </ul>
 
-            {/* Price + CTA row */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-              <p className="text-[clamp(24px,3vw,36px)] font-black tracking-tight" style={{ color: ACCENT }}>
-                {TIERS[tier].price}
-              </p>
-              <a
-                href="#cta-banner"
-                className="btn-primary"
-                style={{ padding: '12px 28px', fontSize: '15px', whiteSpace: 'nowrap' }}
-              >
-                Get a free demo →
-              </a>
-            </div>
+            {/* CTA */}
+            <a
+              href="#contact"
+              className="btn-primary inline-flex"
+              style={{ padding: '12px 28px', fontSize: '15px', whiteSpace: 'nowrap' }}
+            >
+              Enquire about this service →
+            </a>
           </motion.div>
         </AnimatePresence>
       </div>
