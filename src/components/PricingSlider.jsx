@@ -101,10 +101,6 @@ export default function PricingSlider() {
 
       <div className="w-full max-w-4xl mx-auto">
 
-        <p className="text-center text-muted text-sm mb-8">
-          Explore our service packages — slide to see what's included.
-        </p>
-
         {/* Slider track */}
         <div className="relative mb-3">
           <input

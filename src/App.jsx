@@ -7,7 +7,6 @@ import Services           from './components/Services'
 import Process            from './components/Process'
 import WhatsApp           from './components/WhatsApp'
 import Integrations       from './components/Integrations'
-import Pricing            from './components/Pricing'
 import FAQ                from './components/FAQ'
 import CTABanner          from './components/CTABanner'
 import Contact            from './components/Contact'
@@ -26,8 +25,7 @@ export default function App() {
         <Process />
         <WhatsApp />
         <Integrations />
-        <Pricing />
-        <FAQ />
+<FAQ />
         <CTABanner />
         <Contact />
         <Footer />
