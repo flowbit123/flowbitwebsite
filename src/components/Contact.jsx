@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 // Sign up free at https://formspree.io → create a form → paste your form ID here
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mvznabqq'
 
 const SERVICES = [
   'WhatsApp Automation',
