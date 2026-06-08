@@ -5,10 +5,10 @@ import { motion } from 'framer-motion'
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mvznabqq'
 
 const SERVICES = [
-  'WhatsApp Automation',
-  'Lead Follow-Up & Sales',
-  'Review & Retention',
-  'Custom Workflow',
+  'Lead Qualification Bot',
+  'Booking Automation',
+  'Outbound Sales Agent',
+  'Full AI Receptionist',
   'Not sure yet',
 ]
 
