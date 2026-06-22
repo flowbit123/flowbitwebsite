@@ -104,7 +104,7 @@ export default function Contact() {
                   type="tel"
                   value={form.phone}
                   onChange={handleChange}
-                  placeholder="+1 555 000 0000"
+                  placeholder="+27 82 000 0000"
                   className="contact-input"
                 />
               </div>
