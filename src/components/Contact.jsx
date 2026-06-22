@@ -13,7 +13,7 @@ const SERVICES = [
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', service: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
 
   function handleChange(e) {
@@ -31,7 +31,7 @@ export default function Contact() {
       })
       if (res.ok) {
         setStatus('success')
-        setForm({ name: '', email: '', service: '', message: '' })
+        setForm({ name: '', email: '', phone: '', service: '', message: '' })
       } else {
         setStatus('error')
       }
@@ -73,7 +73,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               <div className="flex flex-col gap-2">
                 <label className="text-xs font-semibold uppercase tracking-wide text-white/60">Name *</label>
                 <input
@@ -94,6 +94,17 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   placeholder="jane@company.com"
+                  className="contact-input"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-xs font-semibold uppercase tracking-wide text-white/60">Phone</label>
+                <input
+                  name="phone"
+                  type="tel"
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="+1 555 000 0000"
                   className="contact-input"
                 />
               </div>
