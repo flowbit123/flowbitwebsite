@@ -6,13 +6,13 @@ const CASE = {
   website:  'https://www.wigglewear.co.za',
   logo:     '/Wiggle Wear Logo.jpeg',
   problem:
-    "Wiggle Wear was running Facebook ads driving a high volume of enquiries directly to WhatsApp. Every lead had to be handled manually — answering the same questions, qualifying buyers, confirming orders, one message at a time. The owner couldn't keep up. Leads were going cold, response times were slow, and ad spend was being wasted on enquiries that never converted.",
+    "Wiggle Wear was running Facebook ads driving a high volume of enquiries directly to WhatsApp. Every lead had to be handled manually. Answering the same questions, qualifying buyers, confirming orders, one message at a time. The owner could not keep up. Leads were going cold, response times were slow, and ad spend was being wasted on enquiries that never converted.",
   solution: [
     'Instant auto-response to every Facebook ad lead landing on WhatsApp',
-    'AI-powered conversation handling — answers questions, qualifies buyers, and processes orders',
-    'Filters out time-wasters so the owner only deals with real, interested buyers',
+    'AI powered conversation handling. Answers questions, qualifies buyers, and processes orders',
+    'Filters out time wasters so the owner only deals with real, interested buyers',
     'Customer state tracked across conversations',
-    '24/7 coverage — customers are handled instantly at any hour',
+    '24/7 coverage. Customers are handled instantly at any hour',
   ],
   result:
     'Every lead now gets an instant response. No more cold leads from slow reply times. The owner stopped being the bottleneck and the ads actually started paying off.',
