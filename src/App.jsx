@@ -6,6 +6,7 @@ import TrustedBy          from './components/TrustedBy'
 import Services           from './components/Services'
 import Process            from './components/Process'
 import WhatsApp           from './components/WhatsApp'
+import CaseStudy         from './components/CaseStudy'
 import Integrations       from './components/Integrations'
 import FAQ                from './components/FAQ'
 import CTABanner          from './components/CTABanner'
@@ -24,6 +25,7 @@ export default function App() {
         <Services />
         <Process />
         <WhatsApp />
+        <CaseStudy />
         <Integrations />
 <FAQ />
         <CTABanner />
