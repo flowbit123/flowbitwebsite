@@ -4,7 +4,7 @@ const CASE = {
   client:   'Wiggle Wear',
   industry: 'Children's Clothing & Diaper Reseller',
   website:  'https://www.wigglewear.co.za',
-  logo:     '/wigglewear-logo.png',
+  logo:     '/Wiggle Wear Logo.jpeg',
   problem:
     'Wiggle Wear was running Facebook ads driving a high volume of enquiries directly to WhatsApp. Every lead had to be handled manually — answering the same questions, qualifying buyers, confirming orders, one message at a time. The owner couldn't keep up. Leads were going cold, response times were slow, and ad spend was being wasted on enquiries that never converted.',
   solution: [
