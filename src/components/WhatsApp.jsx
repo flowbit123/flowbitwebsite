@@ -216,7 +216,7 @@ function PhoneMockup() {
 }
 
 export default function WhatsApp() {
-  const [activeTab, setActiveTab] = useState('programmed')
+  const [activeTab, setActiveTab] = useState('ai')
 
   return (
     <section id="whatsapp" className="py-20">
@@ -241,8 +241,8 @@ export default function WhatsApp() {
 
             <div className="flex gap-2 flex-wrap mb-7">
               {[
-                { key: 'programmed', label: 'Pre-programmed Flows' },
                 { key: 'ai',         label: 'AI-Powered Conversations' },
+                { key: 'programmed', label: 'Pre-programmed Flows' },
               ].map(tab => (
                 <button
                   key={tab.key}
