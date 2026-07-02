@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const STATS = [
-  { value: '1,186', label: 'Unique clients messaged', sub: 'in 14 days' },
+  { value: '1,186', label: 'Unique leads handled', sub: 'in 14 days' },
   { value: '5,520', label: 'Lines of conversation', sub: 'processed' },
   { value: 'Instant', label: 'Response time', sub: 'was ~1 day before' },
   { value: '0', label: 'Hires needed', sub: 'fully automated' },
