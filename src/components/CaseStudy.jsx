@@ -1,5 +1,12 @@
 import { motion } from 'framer-motion'
 
+const STATS = [
+  { value: '1,186', label: 'Unique clients messaged', sub: 'in 14 days' },
+  { value: '5,520', label: 'Lines of conversation', sub: 'processed' },
+  { value: 'Instant', label: 'Response time', sub: 'was ~1 day before' },
+  { value: '0', label: 'Hires needed', sub: 'fully automated' },
+]
+
 const CASE = {
   client:   'Wiggle Wear',
   industry: "Children's Clothing & Diaper Reseller",
@@ -120,6 +127,29 @@ export default function CaseStudy() {
             </div>
 
           </div>
+
+          {/* Stats row */}
+          <div style={{ borderTop: '1px solid var(--border)' }}>
+            <div className="px-8 pt-4 pb-2">
+              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--accent)' }}>
+                14 days live
+              </p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4">
+              {STATS.map((s, i) => (
+                <div
+                  key={i}
+                  className="px-8 py-5"
+                  style={{ borderRight: i < STATS.length - 1 ? '1px solid var(--border)' : 'none' }}
+                >
+                  <p className="text-2xl font-extrabold text-white tracking-tight">{s.value}</p>
+                  <p className="text-sm font-medium text-white/70 mt-0.5">{s.label}</p>
+                  <p className="text-xs mt-0.5" style={{ color: 'var(--muted)' }}>{s.sub}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </motion.div>
 
       </div>

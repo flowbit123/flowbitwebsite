@@ -1,18 +1,18 @@
 const INDUSTRIES = [
   'Fitness Studios',
   'Med Spas',
-  'Physiotherapy Clinics',
   'Nail Studios',
   'Barbershops',
   'Wellness Centres',
   'Gyms',
-  'Tanning Studios',
   'Real Estate Agencies',
   'E-commerce Stores',
-  'Law Firms',
   'Dental Practices',
-  'Financial Advisors',
   'Hospitality Businesses',
+  'Roofing Businesses',
+  'Solar Companies',
+  'Plumbing Companies',
+  'Construction Companies',
 ]
 
 export default function TrustedBy() {
