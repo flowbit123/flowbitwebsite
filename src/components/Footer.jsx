@@ -17,34 +17,8 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <a href="#hero" className="flex items-center gap-3 no-underline select-none mb-4">
-              <svg width="34" height="34" viewBox="0 0 38 38" fill="none">
-                <defs>
-                  <radialGradient id="ng-f" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#7BAFC4" stopOpacity="0.25"/>
-                    <stop offset="100%" stopColor="#7BAFC4" stopOpacity="0"/>
-                  </radialGradient>
-                </defs>
-                <circle cx="19" cy="19" r="18" fill="url(#ng-f)"/>
-                <path d="M19 19 Q16 12 19 6"   stroke="#7BAFC4" strokeWidth="1.1" strokeOpacity="0.55" fill="none" strokeLinecap="round"/>
-                <path d="M19 19 Q10 22 8 28"   stroke="#7BAFC4" strokeWidth="1.1" strokeOpacity="0.55" fill="none" strokeLinecap="round"/>
-                <path d="M19 19 Q28 22 30 28"  stroke="#7BAFC4" strokeWidth="1.1" strokeOpacity="0.55" fill="none" strokeLinecap="round"/>
-                <path d="M19 6 Q5 17 8 28"    stroke="#7BAFC4" strokeWidth="0.8" strokeOpacity="0.28" fill="none"/>
-                <path d="M19 6 Q33 17 30 28"  stroke="#7BAFC4" strokeWidth="0.8" strokeOpacity="0.28" fill="none"/>
-                <path d="M8 28 Q19 34 30 28"  stroke="#7BAFC4" strokeWidth="0.8" strokeOpacity="0.28" fill="none"/>
-                <circle cx="19" cy="6"  r="3.5" fill="#7BAFC4" fillOpacity="0.12"/>
-                <circle cx="8"  cy="28" r="3.5" fill="#7BAFC4" fillOpacity="0.12"/>
-                <circle cx="30" cy="28" r="3.5" fill="#7BAFC4" fillOpacity="0.12"/>
-                <circle cx="19" cy="19" r="5"   fill="#7BAFC4" fillOpacity="0.15"/>
-                <circle cx="19" cy="6"  r="2"   fill="#7BAFC4"/>
-                <circle cx="8"  cy="28" r="2"   fill="#7BAFC4"/>
-                <circle cx="30" cy="28" r="2"   fill="#7BAFC4"/>
-                <circle cx="19" cy="19" r="3.2" fill="#7BAFC4"/>
-                <circle cx="19" cy="19" r="1.5" fill="#ffffff"/>
-              </svg>
-              <span style={{ fontWeight: 800, fontSize: '16px', letterSpacing: '-0.02em', lineHeight: 1 }}>
-                <span style={{ color: '#ffffff' }}>FLOW</span><span style={{ color: '#7BAFC4' }}>BIT</span>
-              </span>
+            <a href="#hero" className="flex items-center no-underline select-none mb-4">
+              <img src="/flowbit-logo.png" alt="Flowbit" className="h-9 w-auto" />
             </a>
             <p className="text-muted text-sm leading-relaxed max-w-[260px] mb-6">
               Custom built automation systems for ambitious businesses worldwide. If it's repetitive, we automate it.
