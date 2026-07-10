@@ -7,43 +7,33 @@ const ACCENT_DIM  = 'rgba(123,175,196,0.22)'
 const TIERS = [
   {
     label: 'Lead Qualification Bot',
-    desc: 'Every lead that messages you gets an instant reply, day or night, weekend or holiday. No more losing a potential client because you were busy or missed the message. Every enquiry is answered within seconds, automatically.',
+    desc: 'Every lead that messages your WhatsApp gets an instant reply, day or night, weekend or holiday. No more losing a potential client because you were busy or missed the message. Every enquiry is answered within seconds, automatically, on WhatsApp, SMS or web chat, whatever you prefer.',
     features: [
-      'Every message gets an instant reply with no lead left waiting',
+      'Every WhatsApp message gets an instant reply with no lead left waiting',
       'Works 24/7 so you never miss an enquiry after hours',
       'Gathers the client\'s name, number and what they need before you speak to them',
       'Sends you a WhatsApp or email alert the moment someone is ready to buy',
+      'Not locked to WhatsApp, runs on SMS or website chat too if that suits your business better',
     ],
   },
   {
     label: 'Booking Automation',
-    desc: 'A client messages you, gets an instant reply, and walks away with a confirmed booking, all without you lifting a finger. No missed messages, no delays, no leads going cold because you were tied up.',
+    desc: 'A client messages your WhatsApp, gets an instant reply, and walks away with a confirmed booking, all without you lifting a finger. No missed messages, no delays, no leads going cold because you were tied up. Works the same way over SMS or web chat if WhatsApp isn\'t how your customers reach you.',
     features: [
       'Everything in Lead Qualification Bot',
-      'Instantly checks your calendar and offers available times to the client',
-      'Confirms the booking automatically so the client gets a confirmation straight away',
+      'Instantly checks your calendar and offers available times to the client over WhatsApp',
+      'Confirms the booking automatically so the client gets a WhatsApp confirmation straight away',
       'No double bookings and no back-and-forth about what time works',
       'Handles rescheduling and cancellations so you don\'t have to',
     ],
   },
   {
-    label: 'Outbound Sales Agent',
-    desc: 'Your AI agent doesn\'t just wait for leads to come in. It actively reaches out, follows up, and makes sure no potential client falls through the cracks. Every lead gets contacted, every quote gets chased, without you having to remember.',
+    label: 'Full AI Receptionist',
+    desc: 'A fully intelligent AI that answers every single message the moment it comes in, primarily over WhatsApp, plus Instagram, SMS and your website. Every client feels like they\'re your top priority, even when you\'re sleeping, in a meeting, or fully booked.',
     features: [
       'Everything in Booking Automation',
-      'Follows up with every lead who hasn\'t responded yet, automatically',
-      'Chases unpaid or unopened quotes so you don\'t lose the sale',
-      'Contacts clients who went quiet and brings them back into conversation',
-      'Books meetings and logs everything so nothing gets forgotten',
-    ],
-  },
-  {
-    label: 'Full AI Receptionist',
-    desc: 'A fully intelligent AI that answers every single message the moment it comes in, across WhatsApp, Instagram, and your website. Every client feels like they\'re your top priority, even when you\'re sleeping, in a meeting, or fully booked.',
-    features: [
-      'Everything in Outbound Sales Agent',
       'Instant human-like replies powered by Claude AI, not robotic scripts',
-      'Handles WhatsApp, Instagram DM and website chat all at once',
+      'Handles WhatsApp, Instagram DM, SMS and website chat all at once',
       'Speaks to clients in English or Afrikaans naturally',
       'Monthly report so you can see every lead, response time and booking',
     ],

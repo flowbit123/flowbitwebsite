@@ -7,7 +7,6 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mvznabqq'
 const SERVICES = [
   'Lead Qualification Bot',
   'Booking Automation',
-  'Outbound Sales Agent',
   'Full AI Receptionist',
   'Not sure yet',
 ]
