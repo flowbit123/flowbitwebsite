@@ -84,7 +84,7 @@ export default function Footer() {
         >
           <p className="text-muted text-xs">© 2025 Flowbit. All rights reserved. Built for ambitious businesses worldwide.</p>
           <div className="flex gap-6">
-            <a href="#" className="text-muted text-xs hover:text-accent transition-colors no-underline">Privacy Policy</a>
+            <a href="/privacy" className="text-muted text-xs hover:text-accent transition-colors no-underline">Privacy Policy</a>
             <a href="#" className="text-muted text-xs hover:text-accent transition-colors no-underline">Terms of Service</a>
           </div>
         </div>
