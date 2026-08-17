@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import WorkflowCanvas from './WorkflowCanvas'
 
 const PHRASES = [
   'Scale Without Limits.',
@@ -70,10 +69,10 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center gap-16 w-full max-w-[1060px] mx-auto px-6 py-16">
+      <div className="relative z-10 flex justify-center w-full max-w-[1060px] mx-auto px-6 py-16">
 
-        {/* ── Left: copy ── */}
-        <div>
+        {/* ── Copy ── */}
+        <div className="max-w-[640px] text-center flex flex-col items-center">
           <motion.div
             className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full mb-6"
             style={{
@@ -107,7 +106,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-muted text-[15px] leading-relaxed max-w-[440px] mb-7"
+            className="text-muted text-[15px] leading-relaxed max-w-[440px] mx-auto mb-7"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -116,7 +115,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            className="flex items-center gap-3 flex-wrap mb-10"
+            className="flex items-center justify-center gap-3 flex-wrap mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -126,7 +125,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            className="flex gap-7 pt-6"
+            className="flex justify-center gap-7 pt-6"
             style={{ borderTop: '1px solid var(--border)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -137,23 +136,13 @@ export default function Hero() {
               { num: '20h+',  label: 'Saved Per Week Per Business'       },
               { num: '<60s',  label: 'Average Automation Response Time'     },
             ].map(s => (
-              <div key={s.label} className="flex flex-col gap-0.5">
+              <div key={s.label} className="flex flex-col items-center gap-0.5">
                 <span className="text-[22px] font-extrabold text-accent-text">{s.num}</span>
                 <span className="text-xs text-muted">{s.label}</span>
               </div>
             ))}
           </motion.div>
         </div>
-
-        {/* ── Right: orbital canvas ── */}
-        <motion.div
-          className="hidden md:flex items-center justify-center"
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <WorkflowCanvas />
-        </motion.div>
 
       </div>
     </section>
