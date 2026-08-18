@@ -26,7 +26,7 @@ export default function Footer() {
             <div className="flex gap-2.5">
               {[
                 { Icon: SiGmail,    color: '#EA4335', href: 'mailto:charl@flowbit.co.za', title: 'Email' },
-                { Icon: SiWhatsapp, color: '#25D366', href: '#',                           title: 'WhatsApp' },
+                { Icon: SiWhatsapp, color: '#25D366', href: 'https://wa.me/27615056071',  title: 'WhatsApp' },
                 { Icon: SiLinkedin, color: '#0A66C2', href: '#',                           title: 'LinkedIn' },
               ].map(s => (
                 <a
@@ -71,6 +71,8 @@ export default function Footer() {
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-white mb-5">Contact</p>
             <ul className="flex flex-col gap-3 list-none m-0 p-0">
               <li><a href="mailto:charl@flowbit.co.za" className="text-muted text-sm hover:text-accent transition-colors no-underline">charl@flowbit.co.za</a></li>
+              <li><a href="tel:+27729036399" className="text-muted text-sm hover:text-accent transition-colors no-underline">Call: 072 903 6399</a></li>
+              <li><a href="https://wa.me/27615056071" target="_blank" rel="noopener noreferrer" className="text-muted text-sm hover:text-accent transition-colors no-underline">WhatsApp: +27 61 505 6071</a></li>
               <li><a href="#contact" className="text-muted text-sm hover:text-accent transition-colors no-underline">Book a Free Audit</a></li>
               <li><a href="#contact" className="text-muted text-sm hover:text-accent transition-colors no-underline">Start a Project</a></li>
             </ul>
