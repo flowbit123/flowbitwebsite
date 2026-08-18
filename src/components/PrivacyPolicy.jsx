@@ -1,3 +1,5 @@
+import WhatsAppButton from './WhatsAppButton'
+
 const SECTIONS = [
   {
     title: 'Who we are',
@@ -153,6 +155,8 @@ export default function PrivacyPolicy() {
           <p className="text-muted text-xs">© 2025 Flowbit. All rights reserved.</p>
         </div>
       </footer>
+
+      <WhatsAppButton />
     </div>
   )
 }

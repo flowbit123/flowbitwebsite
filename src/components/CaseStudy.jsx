@@ -1,10 +1,11 @@
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const STATS = [
-  { value: '1,186', label: 'Unique leads handled', sub: 'in 14 days' },
-  { value: '5,520', label: 'Lines of conversation', sub: 'processed' },
-  { value: 'Instant', label: 'Response time', sub: 'was ~1 day before' },
-  { value: '0', label: 'Hires needed', sub: 'fully automated' },
+  { value: 'R205,386', label: 'Total sales', sub: 'closed inside WhatsApp' },
+  { value: '72',       label: 'Orders',       sub: 'placed and paid' },
+  { value: '4,141',    label: 'Customers',    sub: 'unique people served' },
+  { value: '15,690',   label: 'Messages',     sub: 'answered by the bot' },
 ]
 
 const CASE = {
@@ -22,10 +23,20 @@ const CASE = {
     '24/7 coverage. Customers are handled instantly at any hour',
   ],
   result:
-    'Every lead now gets an instant response. No more cold leads from slow reply times. The owner stopped being the bottleneck and the ads actually started paying off.',
+    'In its first month live, the bot closed over R205,000 in sales entirely inside WhatsApp, no cold leads from slow reply times, and the owner stopped being the bottleneck. The ads finally started paying off.',
+  video:  '/wiggle-wear-testimonial.mp4',
+  poster: '/wiggle-wear-video-poster.png',
 }
 
 export default function CaseStudy() {
+  const videoRef = useRef(null)
+  const [playing, setPlaying] = useState(false)
+
+  function handlePlayClick() {
+    videoRef.current?.play()
+    setPlaying(true)
+  }
+
   return (
     <section id="testimonials" className="py-24">
       <div className="max-w-[1060px] mx-auto px-6">
@@ -122,7 +133,7 @@ export default function CaseStudy() {
                 className="mt-6 rounded-xl px-4 py-3 text-xs font-medium"
                 style={{ background: 'rgba(123,175,196,0.08)', border: '1px solid rgba(123,175,196,0.2)', color: 'var(--accent-text)' }}
               >
-                Live since June 2025 · More results coming soon
+                Live since June 2025 · Month 1 results below
               </div>
             </div>
 
@@ -132,7 +143,7 @@ export default function CaseStudy() {
           <div style={{ borderTop: '1px solid var(--border)' }}>
             <div className="px-8 pt-4 pb-2">
               <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--accent)' }}>
-                14 days live
+                Month 1 results
               </p>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4">
@@ -147,6 +158,59 @@ export default function CaseStudy() {
                   <p className="text-xs mt-0.5" style={{ color: 'var(--muted)' }}>{s.sub}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Video testimonial */}
+          <div className="p-8 flex flex-col items-center" style={{ borderTop: '1px solid var(--border)' }}>
+            <div className="flex items-center gap-2 mb-5 self-start">
+              <span className="text-base">🎥</span>
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Hear It From The Owner</p>
+            </div>
+            <div
+              className="relative w-full max-w-2xl rounded-2xl overflow-hidden"
+              style={{
+                aspectRatio: '16 / 9',
+                border: '1px solid var(--border)',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.45)',
+                background: '#000',
+              }}
+            >
+              <video
+                ref={videoRef}
+                src={CASE.video}
+                poster={CASE.poster}
+                controls={playing}
+                playsInline
+                preload="metadata"
+                onPause={() => setPlaying(false)}
+                onPlay={() => setPlaying(true)}
+                className="case-video w-full h-full"
+                style={{ objectFit: 'cover', objectPosition: 'center 20%' }}
+              />
+
+              {!playing && (
+                <button
+                  onClick={handlePlayClick}
+                  aria-label="Play video"
+                  className="absolute inset-0 flex items-center justify-center cursor-pointer border-none"
+                  style={{ background: 'rgba(0,0,0,0.15)' }}
+                >
+                  <span
+                    className="flex items-center justify-center rounded-full transition-transform duration-200 hover:scale-110"
+                    style={{
+                      width: 72,
+                      height: 72,
+                      background: 'rgba(255,255,255,0.95)',
+                      boxShadow: '0 8px 30px rgba(0,0,0,0.5)',
+                    }}
+                  >
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 5.5v13l11-6.5-11-6.5z" fill="#0A0A0A" />
+                    </svg>
+                  </span>
+                </button>
+              )}
             </div>
           </div>
 

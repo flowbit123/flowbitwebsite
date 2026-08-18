@@ -7,11 +7,11 @@ import Services           from './components/Services'
 import Process            from './components/Process'
 import WhatsApp           from './components/WhatsApp'
 import CaseStudy         from './components/CaseStudy'
-import Integrations       from './components/Integrations'
 import FAQ                from './components/FAQ'
 import CTABanner          from './components/CTABanner'
 import Contact            from './components/Contact'
 import Footer             from './components/Footer'
+import WhatsAppButton      from './components/WhatsAppButton'
 
 export default function App() {
   return (
@@ -26,12 +26,12 @@ export default function App() {
         <Process />
         <WhatsApp />
         <CaseStudy />
-        <Integrations />
 <FAQ />
         <CTABanner />
         <Contact />
         <Footer />
       </div>
+      <WhatsAppButton />
     </div>
   )
 }

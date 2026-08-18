@@ -138,3 +138,10 @@ body {
   0%,60%,100% { transform: translateY(0); }
   30%         { transform: translateY(-6px); }
 }
+
+/* ── Fullscreen video: show the full original frame, not the cropped preview ── */
+.case-video:fullscreen,
+.case-video:-webkit-full-screen {
+  object-fit: contain !important;
+  object-position: center !important;
+}
