@@ -158,9 +158,12 @@ export default function CaseStudy() {
 
           {/* Video testimonial */}
           <div className="p-8 flex flex-col items-center" style={{ borderTop: '1px solid var(--border)' }}>
-            <div className="flex items-center gap-2 mb-5 self-start">
-              <span className="text-base">🎥</span>
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Hear It From The Owner</p>
+            <div className="mb-5 self-start">
+              <div className="flex items-center gap-2">
+                <span className="text-base">🎥</span>
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Hear It From The Owner</p>
+              </div>
+              <p className="text-xs mt-1" style={{ color: 'var(--muted)' }}>Recorded after Month 1</p>
             </div>
             <div
               className="relative w-full max-w-2xl rounded-2xl overflow-hidden"
