@@ -2,10 +2,10 @@ import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
 const STATS = [
-  { value: 'R205,386', label: 'Total sales', sub: 'closed inside WhatsApp' },
-  { value: '72',       label: 'Orders',       sub: 'placed and paid' },
-  { value: '4,141',    label: 'Customers',    sub: 'unique people served' },
-  { value: '15,690',   label: 'Messages',     sub: 'answered by the bot' },
+  { value: 'R700,000', label: 'Total sales',        sub: 'closed inside WhatsApp' },
+  { value: '163',      label: 'Orders',              sub: 'placed and paid' },
+  { value: '6,000',    label: 'Unique conversations', sub: 'handled by the bot' },
+  { value: '32,000',   label: 'Lines of conversation', sub: 'processed' },
 ]
 
 const CASE = {
@@ -23,7 +23,7 @@ const CASE = {
     '24/7 coverage. Customers are handled instantly at any hour',
   ],
   result:
-    'In its first month live, the bot closed over R205,000 in sales entirely inside WhatsApp, no cold leads from slow reply times, and the owner stopped being the bottleneck. The ads finally started paying off.',
+    'Two months in, the bot has closed over R700,000 in sales entirely inside WhatsApp, no cold leads from slow reply times, and the owner stopped being the bottleneck. The ads finally started paying off.',
   video:  '/wiggle-wear-testimonial.mp4',
   poster: '/wiggle-wear-video-poster.png',
 }
@@ -133,7 +133,7 @@ export default function CaseStudy() {
                 className="mt-6 rounded-xl px-4 py-3 text-xs font-medium"
                 style={{ background: 'rgba(123,175,196,0.08)', border: '1px solid rgba(123,175,196,0.2)', color: 'var(--accent-text)' }}
               >
-                Live since June 2025 · Month 1 results below
+                Live since June 2025 · Month 2 results below
               </div>
             </div>
 
@@ -143,7 +143,7 @@ export default function CaseStudy() {
           <div style={{ borderTop: '1px solid var(--border)' }}>
             <div className="px-8 pt-4 pb-2">
               <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--accent)' }}>
-                Month 1 results
+                Month 2 results
               </p>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4">
