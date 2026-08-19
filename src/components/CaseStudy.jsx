@@ -1,14 +1,7 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
-const STATS_MONTH_1 = [
-  { value: 'R205,386', label: 'Total sales', sub: 'closed inside WhatsApp' },
-  { value: '72',       label: 'Orders',       sub: 'placed and paid' },
-  { value: '4,141',    label: 'Customers',    sub: 'unique people served' },
-  { value: '15,690',   label: 'Messages',     sub: 'answered by the bot' },
-]
-
-const STATS_MONTH_2 = [
+const STATS = [
   { value: 'R700,000', label: 'Total sales',         sub: 'closed inside WhatsApp' },
   { value: '163',      label: 'Orders',               sub: 'placed and paid' },
   { value: '6,000',    label: 'Unique conversations', sub: 'handled by the bot' },
@@ -30,7 +23,7 @@ const CASE = {
     '24/7 coverage. Customers are handled instantly at any hour',
   ],
   result:
-    'Two months in, the bot has closed over R700,000 in sales entirely inside WhatsApp, no cold leads from slow reply times, and the owner stopped being the bottleneck. The ads finally started paying off.',
+    'The bot has closed over R700,000 in sales entirely inside WhatsApp, no cold leads from slow reply times, and the owner stopped being the bottleneck. The ads finally started paying off.',
   video:  '/wiggle-wear-testimonial.mp4',
   poster: '/wiggle-wear-video-poster.png',
 }
@@ -140,46 +133,20 @@ export default function CaseStudy() {
                 className="mt-6 rounded-xl px-4 py-3 text-xs font-medium"
                 style={{ background: 'rgba(123,175,196,0.08)', border: '1px solid rgba(123,175,196,0.2)', color: 'var(--accent-text)' }}
               >
-                Live since June 2025 · Month 1 & 2 results below
+                Live since June 2026
               </div>
             </div>
 
           </div>
 
-          {/* Stats rows */}
+          {/* Stats row */}
           <div style={{ borderTop: '1px solid var(--border)' }}>
-            <div className="px-8 pt-4 pb-2">
-              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--accent)' }}>
-                Month 1 results
-              </p>
-            </div>
             <div className="grid grid-cols-2 lg:grid-cols-4">
-              {STATS_MONTH_1.map((s, i) => (
+              {STATS.map((s, i) => (
                 <div
                   key={i}
                   className="px-8 py-5"
-                  style={{ borderRight: i < STATS_MONTH_1.length - 1 ? '1px solid var(--border)' : 'none' }}
-                >
-                  <p className="text-2xl font-extrabold text-white tracking-tight">{s.value}</p>
-                  <p className="text-sm font-medium text-white/70 mt-0.5">{s.label}</p>
-                  <p className="text-xs mt-0.5" style={{ color: 'var(--muted)' }}>{s.sub}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ borderTop: '1px solid var(--border)' }}>
-            <div className="px-8 pt-4 pb-2">
-              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: 'var(--accent)' }}>
-                Month 2 results
-              </p>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4">
-              {STATS_MONTH_2.map((s, i) => (
-                <div
-                  key={i}
-                  className="px-8 py-5"
-                  style={{ borderRight: i < STATS_MONTH_2.length - 1 ? '1px solid var(--border)' : 'none' }}
+                  style={{ borderRight: i < STATS.length - 1 ? '1px solid var(--border)' : 'none' }}
                 >
                   <p className="text-2xl font-extrabold text-white tracking-tight">{s.value}</p>
                   <p className="text-sm font-medium text-white/70 mt-0.5">{s.label}</p>
