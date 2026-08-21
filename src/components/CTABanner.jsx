@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion'
 
-export default function CTABanner() {
+export default function CTABanner({
+  eyebrow    = 'Free Audit, No Commitment',
+  titleStart = 'Ready to Stop',
+  titleAccent = 'Doing It Manually?',
+  subtitle   = "Book a free 30-minute audit and we'll map out exactly what to automate first, and the ROI you can expect.",
+}) {
   return (
     <section id="cta-banner" className="py-20">
       <div className="max-w-[1060px] mx-auto px-6">
@@ -21,16 +26,16 @@ export default function CTABanner() {
           />
 
           <div className="section-tag relative" style={{ margin: '0 auto 24px' }}>
-            Free Audit, No Commitment
+            {eyebrow}
           </div>
 
           <h2 className="relative text-[clamp(26px,4vw,44px)] font-extrabold leading-tight tracking-tight mb-3">
-            Ready to Stop{' '}
-            <span className="text-accent-text">Doing It Manually?</span>
+            {titleStart}{' '}
+            <span className="text-accent-text">{titleAccent}</span>
           </h2>
 
           <p className="relative text-muted text-[15px] max-w-[520px] mx-auto leading-relaxed mb-9">
-            Book a free 30-minute audit and we'll map out exactly what to automate first, and the ROI you can expect.
+            {subtitle}
           </p>
 
           <div className="relative flex justify-center gap-3.5 flex-wrap">

@@ -1,4 +1,5 @@
 import WhatsAppButton from './WhatsAppButton'
+import PageSEO from './PageSEO'
 
 const SECTIONS = [
   {
@@ -117,6 +118,11 @@ export default function PrivacyPolicy() {
 
   return (
     <div className="bg-bg-primary text-white font-sans min-h-screen">
+      <PageSEO
+        title="Privacy Policy | Flowbit"
+        description="How Flowbit collects, uses, and protects personal data through our WhatsApp lead qualification and booking systems, in line with POPIA."
+        path="/privacy"
+      />
       {/* Simple header */}
       <header
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/[0.07] bg-bg-primary/90"

@@ -1,10 +1,16 @@
 import { SiGmail, SiWhatsapp, SiLinkedin } from 'react-icons/si'
 
-const SERVICES = ['WhatsApp Automation', 'Lead Follow-Up', 'Review & Retention', 'Custom Workflows']
+const SERVICES = [
+  { label: 'AI Automation',            href: '/services/ai-automation' },
+  { label: 'Paid Advertising',         href: '/services/paid-advertising' },
+  { label: 'Websites & Landing Pages', href: '/services/websites' },
+  { label: 'Social Media Management',  href: '/services/social-media' },
+  { label: 'SEO & Google Visibility',  href: '/services/seo' },
+]
 const COMPANY  = [
-  { label: 'How We Work', href: '#process' },
-  { label: 'Pricing',     href: '#pricing' },
-  { label: 'FAQ',         href: '#faq' },
+  { label: 'How We Work', href: '/#process' },
+  { label: 'Pricing',     href: '/services/ai-automation' },
+  { label: 'FAQ',         href: '/#faq' },
   { label: 'Contact',     href: '#contact' },
 ]
 
@@ -17,7 +23,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <a href="#hero" className="flex items-center no-underline select-none mb-4">
+            <a href="/" className="flex items-center no-underline select-none mb-4">
               <img src="/flowbit-logo.png" alt="Flowbit" className="h-9 w-auto" />
             </a>
             <p className="text-muted text-sm leading-relaxed max-w-[260px] mb-6">
@@ -47,8 +53,8 @@ export default function Footer() {
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-white mb-5">Services</p>
             <ul className="flex flex-col gap-3 list-none m-0 p-0">
               {SERVICES.map(s => (
-                <li key={s}>
-                  <a href="#services" className="text-muted text-sm hover:text-accent transition-colors no-underline">{s}</a>
+                <li key={s.href}>
+                  <a href={s.href} className="text-muted text-sm hover:text-accent transition-colors no-underline">{s.label}</a>
                 </li>
               ))}
             </ul>

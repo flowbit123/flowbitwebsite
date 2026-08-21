@@ -5,14 +5,16 @@ import { motion } from 'framer-motion'
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mvznabqq'
 
 const SERVICES = [
-  'Lead Qualification Bot',
-  'Booking Automation',
-  'Full AI Receptionist',
+  'AI Automation',
+  'Paid Advertising',
+  'Websites & Landing Pages',
+  'Social Media Management',
+  'SEO & Google Visibility',
   'Not sure yet',
 ]
 
-export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', message: '' })
+export default function Contact({ defaultService = '' }) {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', service: defaultService, message: '' })
   const [status, setStatus] = useState('idle') // idle | loading | success | error
 
   function handleChange(e) {
@@ -30,7 +32,7 @@ export default function Contact() {
       })
       if (res.ok) {
         setStatus('success')
-        setForm({ name: '', email: '', phone: '', service: '', message: '' })
+        setForm({ name: '', email: '', phone: '', service: defaultService, message: '' })
       } else {
         setStatus('error')
       }

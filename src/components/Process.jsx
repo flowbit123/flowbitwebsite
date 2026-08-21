@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const STEPS = [
+const DEFAULT_STEPS = [
   {
     num: '01',
     icon: '🔍',
@@ -21,7 +21,13 @@ const STEPS = [
   },
 ]
 
-export default function Process() {
+export default function Process({
+  tag = 'How We Work',
+  titleStart = 'Behind Every Great Result Is a',
+  titleAccent = 'Process That Just Works',
+  subtitle = "We don't do templates. Every automation is built from scratch for your specific business.",
+  steps = DEFAULT_STEPS,
+}) {
   return (
     <section id="process" className="py-20">
       <div className="max-w-[1060px] mx-auto px-6">
@@ -33,13 +39,13 @@ export default function Process() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-tag" style={{ margin: '0 auto 20px' }}>How We Work</div>
+          <div className="section-tag" style={{ margin: '0 auto 20px' }}>{tag}</div>
           <h2 className="text-[clamp(26px,4vw,42px)] font-extrabold leading-tight tracking-tight mb-3">
-            Behind Every Great Result Is a{' '}
-            <span className="text-accent-text">Process That Just Works</span>
+            {titleStart}{' '}
+            <span className="text-accent-text">{titleAccent}</span>
           </h2>
           <p className="text-muted text-[15px] max-w-[520px] mx-auto leading-relaxed">
-            We don't do templates. Every automation is built from scratch for your specific business.
+            {subtitle}
           </p>
         </motion.div>
 
@@ -56,7 +62,7 @@ export default function Process() {
             }}
           />
 
-          {STEPS.map((step, i) => (
+          {steps.map((step, i) => (
             <motion.div
               key={step.num}
               className="flex flex-col items-center text-center px-6"

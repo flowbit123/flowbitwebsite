@@ -12,10 +12,16 @@ import CTABanner          from './components/CTABanner'
 import Contact            from './components/Contact'
 import Footer             from './components/Footer'
 import WhatsAppButton      from './components/WhatsAppButton'
+import PageSEO             from './components/PageSEO'
 
 export default function App() {
   return (
     <div className="bg-bg-primary text-white font-sans overflow-x-hidden">
+      <PageSEO
+        title="Flowbit — The Automation Agency That Makes Growth Effortless"
+        description="Flowbit helps businesses capture more leads, book more clients, and grow without lifting a finger. One team builds and runs your automation, start to finish."
+        path="/"
+      />
       <ParticleBackground />
       <AmbientGlow />
       <div className="relative z-10">
