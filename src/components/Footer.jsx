@@ -5,7 +5,6 @@ const SERVICES = [
   { label: 'Paid Advertising',         href: '/services/paid-advertising' },
   { label: 'Websites & Landing Pages', href: '/services/websites' },
   { label: 'Social Media Management',  href: '/services/social-media' },
-  { label: 'SEO & Google Visibility',  href: '/services/seo' },
 ]
 const COMPANY  = [
   { label: 'How We Work', href: '/#process' },

@@ -5,7 +5,6 @@ const SERVICES_MENU = [
   { label: 'Paid Advertising',           desc: 'Google, Facebook, Instagram & TikTok ads',                 href: '/services/paid-advertising' },
   { label: 'Websites & Landing Pages',   desc: 'Sites and funnels built to convert',                       href: '/services/websites' },
   { label: 'Social Media Management',    desc: 'Done-for-you content and posting',                         href: '/services/social-media' },
-  { label: 'SEO & Google Visibility',    desc: 'Get found by the people already searching for you',        href: '/services/seo' },
 ]
 
 const LINKS = [

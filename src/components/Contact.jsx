@@ -9,7 +9,6 @@ const SERVICES = [
   'Paid Advertising',
   'Websites & Landing Pages',
   'Social Media Management',
-  'SEO & Google Visibility',
   'Not sure yet',
 ]
 

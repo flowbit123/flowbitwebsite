@@ -5,7 +5,6 @@ import AiAutomationPage from './components/pages/AiAutomationPage.jsx'
 import PaidAdvertisingPage from './components/pages/PaidAdvertisingPage.jsx'
 import WebsitesPage from './components/pages/WebsitesPage.jsx'
 import SocialMediaPage from './components/pages/SocialMediaPage.jsx'
-import SeoPage from './components/pages/SeoPage.jsx'
 import './index.css'
 
 export const createRoot = ViteReactSSG({
@@ -16,6 +15,5 @@ export const createRoot = ViteReactSSG({
     { path: '/services/paid-advertising', element: <PaidAdvertisingPage /> },
     { path: '/services/websites',         element: <WebsitesPage /> },
     { path: '/services/social-media',     element: <SocialMediaPage /> },
-    { path: '/services/seo',              element: <SeoPage /> },
   ],
 })

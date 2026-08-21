@@ -25,12 +25,6 @@ const CATEGORIES = [
     desc: 'Done-for-you content and posting so your brand shows up consistently.',
     href: '/services/social-media',
   },
-  {
-    icon: '🔍',
-    title: 'SEO & Google Visibility',
-    desc: 'Get found on Google by the people already searching for what you do.',
-    href: '/services/seo',
-  },
 ]
 
 export default function Services() {
@@ -55,7 +49,7 @@ export default function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {CATEGORIES.map((c, i) => (
             <motion.a
               key={c.href}
