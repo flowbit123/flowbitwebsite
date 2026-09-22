@@ -1,4 +1,4 @@
-export default function AmbientGlow() {
+export default function AmbientGlow({ fixed = false }) {
   const blobs = [
     { top: '4%',  left: '-8%',  w: 650, h: 520, color: 'rgba(255,255,255,0.045)', delay: '0s',   dur: '9s'  },
     { top: '2%',  left: '62%',  w: 550, h: 440, color: 'rgba(255,255,255,0.035)', delay: '3s',   dur: '12s' },
@@ -11,7 +11,7 @@ export default function AmbientGlow() {
   ]
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 1 }}>
+    <div className={`${fixed ? 'fixed' : 'absolute'} inset-0 pointer-events-none overflow-hidden`} style={{ zIndex: 1 }}>
       {blobs.map((b, i) => (
         <div
           key={i}

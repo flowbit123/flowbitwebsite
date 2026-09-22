@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 
 const SERVICES_MENU = [
-  { label: 'AI Automation',              desc: 'Lead qualification, booking, AI receptionist & WhatsApp', href: '/services/ai-automation' },
-  { label: 'Paid Advertising',           desc: 'Google, Facebook, Instagram & TikTok ads',                 href: '/services/paid-advertising' },
-  { label: 'Websites & Landing Pages',   desc: 'Sites and funnels built to convert',                       href: '/services/websites' },
-  { label: 'Social Media Management',    desc: 'Done-for-you content and posting',                         href: '/services/social-media' },
+  { label: 'Paid Advertising & Lead Generation', desc: 'Google, Facebook, Instagram & TikTok ads',                 href: '/services/paid-advertising' },
+  { label: 'AI Automation',                      desc: 'Lead qualification, booking, AI receptionist & WhatsApp', href: '/services/ai-automation' },
+  { label: 'Websites & Landing Pages',           desc: 'Sites and funnels built to convert',                       href: '/services/websites' },
+  { label: 'Social Media Management',            desc: 'Done-for-you content and posting',                         href: '/services/social-media' },
 ]
 
 const LINKS = [
@@ -144,7 +144,7 @@ export default function Navbar() {
                   key={s.href}
                   href={s.href}
                   onClick={() => setOpen(false)}
-                  className="text-muted text-sm font-medium py-2 no-underline hover:text-accent transition-colors"
+                  className="text-muted text-sm font-medium py-2 no-underline hover:text-accent-text transition-colors"
                 >
                   {s.label}
                 </a>
@@ -157,7 +157,7 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="text-muted text-base font-medium py-2.5 hover:text-accent transition-colors no-underline"
+              className="text-muted text-base font-medium py-2.5 hover:text-accent-text transition-colors no-underline"
             >
               {l.label}
             </a>

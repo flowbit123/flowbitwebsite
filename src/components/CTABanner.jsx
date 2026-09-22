@@ -7,10 +7,10 @@ export default function CTABanner({
   subtitle   = "Book a free 30-minute audit and we'll map out exactly what to automate first, and the ROI you can expect.",
 }) {
   return (
-    <section id="cta-banner" className="py-20">
+    <section id="cta-banner" className="section-light py-20">
       <div className="max-w-[1060px] mx-auto px-6">
         <motion.div
-          className="relative rounded-[24px] px-12 py-16 text-center overflow-hidden"
+          className="relative rounded-[24px] px-12 py-16 text-center overflow-hidden text-white"
           style={{ background: 'var(--bg3)', border: '1px solid rgba(255,255,255,0.2)' }}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +48,7 @@ export default function CTABanner({
             </a>
             <a
               href="#contact"
-              className="btn-ghost"
+              className="btn-ghost on-dark"
               style={{ fontSize: '15px', padding: '13px 28px' }}
             >
               Contact Us

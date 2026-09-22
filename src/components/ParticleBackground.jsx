@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 
-export default function ParticleBackground() {
+export default function ParticleBackground({ fixed = false }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -33,9 +33,16 @@ export default function ParticleBackground() {
     }
 
     function resize() {
-      // Fixed to viewport only — not full page height
-      W = canvas.width  = window.innerWidth
-      H = canvas.height = window.innerHeight
+      if (fixed) {
+        // Fixed to viewport only — not full page height
+        W = canvas.width  = window.innerWidth
+        H = canvas.height = window.innerHeight
+      } else {
+        // Contained within its parent section
+        const rect = canvas.parentElement.getBoundingClientRect()
+        W = canvas.width  = rect.width
+        H = canvas.height = rect.height
+      }
       init()
     }
 
@@ -66,12 +73,12 @@ export default function ParticleBackground() {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', onResize)
     }
-  }, [])
+  }, [fixed])
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
+      className={`${fixed ? 'fixed' : 'absolute'} inset-0 pointer-events-none`}
       style={{ zIndex: 0 }}
     />
   )

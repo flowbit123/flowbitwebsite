@@ -31,8 +31,8 @@ function FAQItem({ item, index }) {
     <motion.div
       className="rounded-xl overflow-hidden transition-colors duration-[250ms]"
       style={{
-        background: 'var(--bg3)',
-        border: `1px solid ${open ? 'rgba(255,255,255,0.25)' : 'var(--border)'}`,
+        background: 'var(--bg-light-2)',
+        border: `1px solid ${open ? 'rgba(43,58,103,0.3)' : 'var(--border-light)'}`,
       }}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -41,14 +41,14 @@ function FAQItem({ item, index }) {
     >
       <button
         onClick={() => setOpen(o => !o)}
-        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold bg-transparent border-none cursor-pointer text-white"
+        className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold bg-transparent border-none cursor-pointer text-ink"
       >
         {item.q}
         <div
           className="w-7 h-7 rounded-full flex items-center justify-center text-sm flex-shrink-0 transition-all duration-300"
           style={{
-            background: open ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.05)',
-            color: open ? 'var(--accent)' : 'white',
+            background: open ? 'rgba(43,58,103,0.12)' : 'rgba(20,30,50,0.05)',
+            color: open ? 'var(--accent)' : 'var(--ink)',
             transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
           }}
         >
@@ -66,7 +66,7 @@ function FAQItem({ item, index }) {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className="px-6 pb-5 text-muted text-[15px] leading-relaxed">{item.a}</p>
+            <p className="px-6 pb-5 text-ink-muted text-[15px] leading-relaxed">{item.a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -76,7 +76,7 @@ function FAQItem({ item, index }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-20">
+    <section id="faq" className="section-light py-20">
       <div className="max-w-[1060px] mx-auto px-6">
 
         <motion.div
@@ -86,12 +86,12 @@ export default function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-tag" style={{ margin: '0 auto 20px' }}>FAQ</div>
+          <div className="section-tag on-light" style={{ margin: '0 auto 20px' }}>FAQ</div>
           <h2 className="text-[clamp(26px,4vw,42px)] font-extrabold leading-tight tracking-tight mb-3">
             Questions You're{' '}
             <span className="text-accent-text">Probably Thinking</span>
           </h2>
-          <p className="text-muted text-[15px] max-w-[520px] mx-auto leading-relaxed">
+          <p className="text-ink-muted text-[15px] max-w-[520px] mx-auto leading-relaxed">
             Everything you need to know before we start automating your business.
           </p>
         </motion.div>

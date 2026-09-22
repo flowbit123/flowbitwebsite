@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { LuZap, LuBot, LuCircleCheckBig, LuVideo } from 'react-icons/lu'
 
 const STATS = [
   { value: 'R700,000', label: 'Total sales',         sub: 'closed inside WhatsApp' },
@@ -38,7 +39,7 @@ export default function CaseStudy() {
   }
 
   return (
-    <section id="testimonials" className="py-24">
+    <section id="case-study" className="section-light py-24">
       <div className="max-w-[1060px] mx-auto px-6">
 
         {/* Header */}
@@ -49,7 +50,7 @@ export default function CaseStudy() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="section-tag mx-auto mb-5">Case Study</div>
+          <div className="section-tag on-light mx-auto mb-5">Case Study</div>
           <h2 className="text-[clamp(28px,4vw,46px)] font-extrabold leading-tight tracking-tight mb-4">
             Real Results for{' '}
             <span className="text-accent-text">Real Businesses</span>
@@ -87,7 +88,7 @@ export default function CaseStudy() {
               href={CASE.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-ghost text-xs px-4 py-2"
+              className="btn-ghost on-dark text-xs px-4 py-2"
               style={{ fontSize: '12px', padding: '8px 18px' }}
             >
               Visit Website →
@@ -100,7 +101,7 @@ export default function CaseStudy() {
             {/* Problem */}
             <div className="p-7" style={{ borderRight: '1px solid var(--border)' }}>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-base">⚡</span>
+                <LuZap size={16} className="text-white/50" />
                 <p className="text-xs font-semibold uppercase tracking-widest text-white/50">The Problem</p>
               </div>
               <p className="text-white/70 text-sm leading-relaxed">{CASE.problem}</p>
@@ -109,7 +110,7 @@ export default function CaseStudy() {
             {/* Solution */}
             <div className="p-7" style={{ borderRight: '1px solid var(--border)' }}>
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-base">🤖</span>
+                <LuBot size={16} className="text-white/50" />
                 <p className="text-xs font-semibold uppercase tracking-widest text-white/50">What We Built</p>
               </div>
               <ul className="flex flex-col gap-3">
@@ -125,13 +126,13 @@ export default function CaseStudy() {
             {/* Result */}
             <div className="p-7">
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-base">✅</span>
+                <LuCircleCheckBig size={16} className="text-white/50" />
                 <p className="text-xs font-semibold uppercase tracking-widest text-white/50">The Result</p>
               </div>
               <p className="text-white/70 text-sm leading-relaxed">{CASE.result}</p>
               <div
                 className="mt-6 rounded-xl px-4 py-3 text-xs font-medium"
-                style={{ background: 'rgba(123,175,196,0.08)', border: '1px solid rgba(123,175,196,0.2)', color: 'var(--accent-text)' }}
+                style={{ background: 'rgba(43,58,103,0.12)', border: '1px solid rgba(43,58,103,0.28)', color: 'var(--accent-text)' }}
               >
                 Live since June 2026
               </div>
@@ -160,7 +161,7 @@ export default function CaseStudy() {
           <div className="p-8 flex flex-col items-center" style={{ borderTop: '1px solid var(--border)' }}>
             <div className="mb-5 self-start">
               <div className="flex items-center gap-2">
-                <span className="text-base">🎥</span>
+                <LuVideo size={16} className="text-white/50" />
                 <p className="text-xs font-semibold uppercase tracking-widest text-white/50">Hear It From The Owner</p>
               </div>
               <p className="text-xs mt-1" style={{ color: 'var(--muted)' }}>Recorded after Month 1</p>

@@ -1,10 +1,12 @@
 import { SiGmail, SiWhatsapp, SiLinkedin } from 'react-icons/si'
+import ParticleBackground from './ParticleBackground'
+import AmbientGlow from './AmbientGlow'
 
 const SERVICES = [
-  { label: 'AI Automation',            href: '/services/ai-automation' },
-  { label: 'Paid Advertising',         href: '/services/paid-advertising' },
-  { label: 'Websites & Landing Pages', href: '/services/websites' },
-  { label: 'Social Media Management',  href: '/services/social-media' },
+  { label: 'Paid Advertising & Lead Generation', href: '/services/paid-advertising' },
+  { label: 'AI Automation',                      href: '/services/ai-automation' },
+  { label: 'Websites & Landing Pages',           href: '/services/websites' },
+  { label: 'Social Media Management',            href: '/services/social-media' },
 ]
 const COMPANY  = [
   { label: 'How We Work', href: '/#process' },
@@ -15,8 +17,10 @@ const COMPANY  = [
 
 export default function Footer() {
   return (
-    <footer className="pt-14 pb-8" style={{ borderTop: '1px solid var(--border)' }}>
-      <div className="max-w-[1060px] mx-auto px-6">
+    <footer className="section-dark relative overflow-hidden pt-14 pb-8" style={{ borderTop: '1px solid var(--border)' }}>
+      <ParticleBackground />
+      <AmbientGlow />
+      <div className="relative z-10 max-w-[1060px] mx-auto px-6">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
@@ -53,7 +57,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3 list-none m-0 p-0">
               {SERVICES.map(s => (
                 <li key={s.href}>
-                  <a href={s.href} className="text-muted text-sm hover:text-accent transition-colors no-underline">{s.label}</a>
+                  <a href={s.href} className="text-muted text-sm hover:text-accent-text transition-colors no-underline">{s.label}</a>
                 </li>
               ))}
             </ul>
@@ -65,7 +69,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3 list-none m-0 p-0">
               {COMPANY.map(c => (
                 <li key={c.label}>
-                  <a href={c.href} className="text-muted text-sm hover:text-accent transition-colors no-underline">{c.label}</a>
+                  <a href={c.href} className="text-muted text-sm hover:text-accent-text transition-colors no-underline">{c.label}</a>
                 </li>
               ))}
             </ul>
@@ -75,11 +79,11 @@ export default function Footer() {
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.08em] text-white mb-5">Contact</p>
             <ul className="flex flex-col gap-3 list-none m-0 p-0">
-              <li><a href="mailto:charl@flowbit.co.za" className="text-muted text-sm hover:text-accent transition-colors no-underline">charl@flowbit.co.za</a></li>
-              <li><a href="tel:+27729036399" className="text-muted text-sm hover:text-accent transition-colors no-underline">Call: 072 903 6399</a></li>
-              <li><a href="https://wa.me/27615056071" target="_blank" rel="noopener noreferrer" className="text-muted text-sm hover:text-accent transition-colors no-underline">WhatsApp: +27 61 505 6071</a></li>
-              <li><a href="#contact" className="text-muted text-sm hover:text-accent transition-colors no-underline">Book a Free Audit</a></li>
-              <li><a href="#contact" className="text-muted text-sm hover:text-accent transition-colors no-underline">Start a Project</a></li>
+              <li><a href="mailto:charl@flowbit.co.za" className="text-muted text-sm hover:text-accent-text transition-colors no-underline">charl@flowbit.co.za</a></li>
+              <li><a href="tel:+27729036399" className="text-muted text-sm hover:text-accent-text transition-colors no-underline">Call: 072 903 6399</a></li>
+              <li><a href="https://wa.me/27615056071" target="_blank" rel="noopener noreferrer" className="text-muted text-sm hover:text-accent-text transition-colors no-underline">WhatsApp: +27 61 505 6071</a></li>
+              <li><a href="#contact" className="text-muted text-sm hover:text-accent-text transition-colors no-underline">Book a Free Audit</a></li>
+              <li><a href="#contact" className="text-muted text-sm hover:text-accent-text transition-colors no-underline">Start a Project</a></li>
             </ul>
           </div>
         </div>
@@ -91,8 +95,8 @@ export default function Footer() {
         >
           <p className="text-muted text-xs">© 2025 Flowbit. All rights reserved. Built for ambitious businesses worldwide.</p>
           <div className="flex gap-6">
-            <a href="/privacy" className="text-muted text-xs hover:text-accent transition-colors no-underline">Privacy Policy</a>
-            <a href="#" className="text-muted text-xs hover:text-accent transition-colors no-underline">Terms of Service</a>
+            <a href="/privacy" className="text-muted text-xs hover:text-accent-text transition-colors no-underline">Privacy Policy</a>
+            <a href="#" className="text-muted text-xs hover:text-accent-text transition-colors no-underline">Terms of Service</a>
           </div>
         </div>
       </div>

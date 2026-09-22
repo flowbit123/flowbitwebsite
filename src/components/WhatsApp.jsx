@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FiArrowLeft, FiPhone, FiVideo, FiMoreVertical, FiSmile, FiMic } from 'react-icons/fi'
 import { BsCheckAll } from 'react-icons/bs'
 import { SiWhatsapp } from 'react-icons/si'
+import { LuCheck } from 'react-icons/lu'
 
 const TABS = {
   programmed: [
@@ -219,7 +220,7 @@ export default function WhatsApp() {
   const [activeTab, setActiveTab] = useState('ai')
 
   return (
-    <section id="whatsapp" className="py-20">
+    <section id="whatsapp" className="section-light py-20">
       <div className="max-w-[1060px] mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-16">
 
@@ -230,7 +231,7 @@ export default function WhatsApp() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="section-tag">WhatsApp Automation</div>
+            <div className="section-tag on-light">WhatsApp Automation</div>
             <h2 className="text-[clamp(26px,4vw,42px)] font-extrabold leading-tight tracking-tight mb-3">
               Your Customers Text.{' '}
               <span className="text-accent-text">Flowbit Answers.</span>
@@ -249,9 +250,9 @@ export default function WhatsApp() {
                   onClick={() => setActiveTab(tab.key)}
                   className="px-4 py-2 rounded-full text-[13px] font-semibold cursor-pointer transition-all duration-[250ms] border"
                   style={{
-                    background:  activeTab === tab.key ? 'var(--accent)' : 'var(--bg3)',
-                    color:       activeTab === tab.key ? '#000'          : 'var(--muted)',
-                    borderColor: activeTab === tab.key ? 'var(--accent)' : 'var(--border)',
+                    background:  activeTab === tab.key ? 'var(--accent)' : 'var(--bg-light-2)',
+                    color:       activeTab === tab.key ? '#fff'          : 'var(--ink-muted)',
+                    borderColor: activeTab === tab.key ? 'var(--accent)' : 'var(--border-light)',
                   }}
                 >
                   {tab.label}
@@ -263,12 +264,12 @@ export default function WhatsApp() {
               {TABS[activeTab].map((f, i) => (
                 <div key={i} className="flex items-start gap-3.5">
                   <div
-                    className="w-[22px] h-[22px] rounded-md flex items-center justify-center flex-shrink-0 text-[13px] mt-0.5"
-                    style={{ background: 'rgba(123,175,196,0.1)', border: '1px solid rgba(123,175,196,0.3)' }}
+                    className="w-[22px] h-[22px] rounded-md flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: 'rgba(43,58,103,0.1)', border: '1px solid rgba(43,58,103,0.3)', color: 'var(--accent)' }}
                   >
-                    ✓
+                    <LuCheck size={13} strokeWidth={2.5} />
                   </div>
-                  <p className="text-muted text-[15px] leading-relaxed">{f.text}</p>
+                  <p className="text-ink-muted text-[15px] leading-relaxed">{f.text}</p>
                 </div>
               ))}
             </div>

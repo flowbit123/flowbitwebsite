@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import ParticleBackground from './ParticleBackground'
+import AmbientGlow from './AmbientGlow'
 
 const PHRASES = [
-  'Scale Without Limits.',
-  'WhatsApp Automation.',
-  'Close Leads 24/7.',
-  'Retain More Clients.',
-  'Eliminate Manual Work.',
+  'Fully Automated.',
+  'Answered in Seconds.',
+  'Closed on WhatsApp.',
+  'Booked While You Sleep.',
+  'Never Missed Again.',
 ]
 
 function useTypewriter(phrases) {
@@ -58,8 +60,11 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center pt-[68px] overflow-hidden bg-transparent"
+      className="section-dark relative min-h-screen flex items-center pt-[68px] overflow-hidden"
     >
+      <ParticleBackground />
+      <AmbientGlow />
+
       {/* Radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -74,18 +79,13 @@ export default function Hero() {
         {/* ── Copy ── */}
         <div className="max-w-[640px] text-center flex flex-col items-center">
           <motion.div
-            className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full mb-6"
-            style={{
-              background: 'rgba(255,255,255,0.07)',
-              border:     '1px solid rgba(255,255,255,0.2)',
-              color:      'var(--accent)',
-            }}
+            className="text-xs font-semibold tracking-[0.14em] uppercase mb-6"
+            style={{ color: 'var(--accent-text)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-dot" />
-            AI Automation Agency
+            Lead Generation & Automation Agency
           </motion.div>
 
           <motion.h1
@@ -94,7 +94,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Automate Everything.
+            More Leads. More Bookings.
             <br />
             <span
               className="text-accent-text block"
@@ -111,11 +111,11 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Custom built automation systems that eliminate repetitive work so your business runs 24/7 without extra headcount.
+            More leads from paid ads, sites that convert, and content that keeps showing up, all wired into automation that answers, qualifies, and books every one of them without you lifting a finger.
           </motion.p>
 
           <motion.div
-            className="flex items-center justify-center gap-3 flex-wrap mb-10"
+            className="flex items-center justify-center gap-3 flex-wrap mb-7"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -123,6 +123,17 @@ export default function Hero() {
             <a href="#cta-banner" className="btn-primary">Book a Free Audit →</a>
             <a href="#process"    className="btn-ghost">See How It Works</a>
           </motion.div>
+
+          <motion.a
+            href="#case-study"
+            className="inline-flex items-center gap-2 text-sm font-semibold no-underline mb-10 rounded-full px-4 py-2"
+            style={{ color: 'var(--accent-text)', background: 'rgba(43,58,103,0.12)', border: '1px solid rgba(43,58,103,0.3)' }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+          >
+            R700,000+ closed for one client inside WhatsApp →
+          </motion.a>
 
           <motion.div
             className="flex justify-center gap-7 pt-6"

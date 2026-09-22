@@ -20,8 +20,8 @@ export default function TrustedBy() {
 
   return (
     <div
-      className="py-5 overflow-hidden"
-      style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
+      className="section-light py-5 overflow-hidden"
+      style={{ borderTop: '1px solid var(--border-light)', borderBottom: '1px solid var(--border-light)' }}
     >
       <div
         className="flex gap-0 whitespace-nowrap"
@@ -31,9 +31,9 @@ export default function TrustedBy() {
           <span
             key={i}
             className="inline-flex items-center gap-3 text-sm font-medium px-6"
-            style={{ color: 'rgba(255,255,255,0.45)' }}
+            style={{ color: 'var(--ink-muted)' }}
           >
-            <span style={{ color: 'rgba(255,255,255,0.2)' }}>•</span>
+            <span style={{ color: 'rgba(20,30,50,0.25)' }}>•</span>
             {label}
           </span>
         ))}

@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { LuMail, LuZap, LuGlobe } from 'react-icons/lu'
 
 // Sign up free at https://formspree.io → create a form → paste your form ID here
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mvznabqq'
 
 const SERVICES = [
+  'Paid Advertising & Lead Generation',
   'AI Automation',
-  'Paid Advertising',
   'Websites & Landing Pages',
   'Social Media Management',
   'Not sure yet',
@@ -41,7 +42,7 @@ export default function Contact({ defaultService = '' }) {
   }
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="section-light py-24">
       <div className="max-w-[1060px] mx-auto px-6">
 
         {/* Header */}
@@ -52,7 +53,7 @@ export default function Contact({ defaultService = '' }) {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="section-tag mx-auto mb-5">Get In Touch</div>
+          <div className="section-tag on-light mx-auto mb-5">Get In Touch</div>
           <h2 className="text-[clamp(28px,4vw,46px)] font-extrabold leading-tight tracking-tight mb-4">
             Let's Build Something{' '}
             <span className="text-accent-text">That Works For You</span>
@@ -75,7 +76,7 @@ export default function Contact({ defaultService = '' }) {
           >
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-semibold uppercase tracking-wide text-white/60">Name *</label>
+                <label className="text-xs font-semibold uppercase tracking-wide text-ink/60">Name *</label>
                 <input
                   name="name"
                   value={form.name}
@@ -86,7 +87,7 @@ export default function Contact({ defaultService = '' }) {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-semibold uppercase tracking-wide text-white/60">Email *</label>
+                <label className="text-xs font-semibold uppercase tracking-wide text-ink/60">Email *</label>
                 <input
                   name="email"
                   type="email"
@@ -98,7 +99,7 @@ export default function Contact({ defaultService = '' }) {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-semibold uppercase tracking-wide text-white/60">Phone</label>
+                <label className="text-xs font-semibold uppercase tracking-wide text-ink/60">Phone</label>
                 <input
                   name="phone"
                   type="tel"
@@ -111,7 +112,7 @@ export default function Contact({ defaultService = '' }) {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold uppercase tracking-wide text-white/60">I'm interested in</label>
+              <label className="text-xs font-semibold uppercase tracking-wide text-ink/60">I'm interested in</label>
               <select
                 name="service"
                 value={form.service}
@@ -124,7 +125,7 @@ export default function Contact({ defaultService = '' }) {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-xs font-semibold uppercase tracking-wide text-white/60">Message *</label>
+              <label className="text-xs font-semibold uppercase tracking-wide text-ink/60">Message *</label>
               <textarea
                 name="message"
                 value={form.message}
@@ -175,19 +176,19 @@ export default function Contact({ defaultService = '' }) {
           >
             {[
               {
-                icon: '📧',
+                Icon: LuMail,
                 label: 'Email',
                 value: 'charl@flowbit.co.za',
                 href: 'mailto:charl@flowbit.co.za',
               },
               {
-                icon: '⚡',
+                Icon: LuZap,
                 label: 'Response time',
                 value: 'Within 24 hours',
                 href: null,
               },
               {
-                icon: '🌍',
+                Icon: LuGlobe,
                 label: 'We work with',
                 value: 'Businesses worldwide',
                 href: null,
@@ -196,14 +197,14 @@ export default function Contact({ defaultService = '' }) {
               <div
                 key={item.label}
                 className="rounded-2xl p-5 flex items-start gap-4"
-                style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}
+                style={{ background: 'var(--bg-light-2)', border: '1px solid var(--border-light)' }}
               >
-                <span className="text-2xl mt-0.5">{item.icon}</span>
+                <item.Icon size={22} strokeWidth={1.75} className="mt-0.5" style={{ color: 'var(--accent)' }} />
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-white/50 mb-1">{item.label}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-muted mb-1">{item.label}</p>
                   {item.href
-                    ? <a href={item.href} className="text-white text-sm font-medium hover:text-accent transition-colors no-underline">{item.value}</a>
-                    : <p className="text-white text-sm font-medium">{item.value}</p>
+                    ? <a href={item.href} className="text-ink text-sm font-medium hover:text-accent transition-colors no-underline">{item.value}</a>
+                    : <p className="text-ink text-sm font-medium">{item.value}</p>
                   }
                 </div>
               </div>
@@ -211,10 +212,14 @@ export default function Contact({ defaultService = '' }) {
 
             <div
               className="rounded-2xl p-6 mt-1"
-              style={{ background: 'var(--bg3)', border: '1px solid rgba(123,175,196,0.2)' }}
+              style={{
+                background: 'rgba(43,58,103,0.06)',
+                border: '1px solid var(--border-light)',
+                borderLeft: '3px solid var(--accent)',
+              }}
             >
-              <p className="text-accent-text font-semibold text-sm mb-2">Free Automation Audit</p>
-              <p className="text-muted text-sm leading-relaxed">
+              <p className="font-semibold text-sm mb-2" style={{ color: 'var(--accent)' }}>Free Automation Audit</p>
+              <p className="text-ink-muted text-sm leading-relaxed">
                 Not sure where to start? Fill in the form and we'll send you a custom automation plan, no obligation.
               </p>
             </div>

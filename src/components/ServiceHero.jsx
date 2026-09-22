@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
+import ParticleBackground from './ParticleBackground'
+import AmbientGlow from './AmbientGlow'
 
 export default function ServiceHero({ eyebrow, title, subtitle }) {
   return (
-    <section className="relative pt-[140px] pb-20 overflow-hidden bg-transparent">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.07) 0%, transparent 65%)' }}
-      />
+    <section className="section-dark relative pt-[140px] pb-20 overflow-hidden">
+      <ParticleBackground />
+      <AmbientGlow />
       <div className="relative z-10 max-w-[760px] mx-auto px-6 text-center">
         <motion.div
           className="section-tag mx-auto"
